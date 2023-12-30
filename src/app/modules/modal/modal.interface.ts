@@ -11,12 +11,13 @@ export interface Modal {
 	timeout?: any;
 	timestart?: any;
 	class?: string;
-	modals?: object;
+	modals?: Record<string, any>;
 	position?: string;
 	closable?: boolean;
 	unique?: string;
 	[x: string]: any;
 }
+
 export const DEFAULT_MODAL: Modal = {
 	size: 'mid',
 	timeout: 0,
@@ -25,17 +26,21 @@ export const DEFAULT_MODAL: Modal = {
 	modals: {},
 	position: 'tc',
 	closable: true
-}
+};
 
 export interface ModalConfig {
 	size?: any;
 	timeout?: any;
 	timestart?: any;
 	class?: string;
-	modals?: object;
+	modals?: Record<string, any>;
 	position?: string;
 	closable?: boolean;
 	unique?: string;
 }
-export const MODAL_CONFIG_TOKEN = new InjectionToken<ModalConfig>('modalConfig');
-export const MODAL_DEFAULT_CONFIG: ModalConfig = {}
+
+export const MODAL_CONFIG_TOKEN = new InjectionToken<ModalConfig>(
+	'modalConfig'
+);
+
+export const MODAL_DEFAULT_CONFIG: ModalConfig = {};

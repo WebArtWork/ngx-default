@@ -23,17 +23,6 @@
       "sourceMap": true,
       "baseUrl": "./",
       "strict": true,
-      "paths": {
-        "@environment/*": [
-          "src/environments/*"
-        ],
-        "@modules*": [
-          "src/app/@modules*"
-        ],
-        "@core/*": [
-          "src/app/@core/*"
-        ]
-      },
       "lib": [
         "es2020",
         "dom"

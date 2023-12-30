@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Injectable()
-export class AdminsGuard implements CanActivate {
+export class AdminsGuard {
 	constructor(private router: Router) {}
 
 	canActivate(): boolean {

@@ -1,21 +1,13 @@
 import { NgModule } from '@angular/core';
-import { CoreModule } from 'src/app/core';
 import { AlertComponent } from './alert.component';
 import { AlertWrapperComponent } from './alert-wrapper/alert-wrapper.component';
+import { CommonModule } from '@angular/common';
+import { ButtonModule } from '../button/button.module';
 
 @NgModule({
-	imports: [
-		CoreModule
-	],
-	declarations: [
-		AlertComponent,
-  AlertWrapperComponent
-	],
-	exports: [
-		AlertComponent
-	],
+	imports: [CommonModule, ButtonModule],
+	declarations: [AlertComponent, AlertWrapperComponent],
+	exports: [AlertComponent],
 	providers: []
-
 })
-
-export class AlertModule { }
+export class AlertModule {}

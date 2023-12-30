@@ -1,7 +1,11 @@
 import { Injectable, Inject, Optional } from '@angular/core';
-import { Alert, AlertConfig, ALERT_CONFIG_TOKEN, ALERT_DEFAULT_CONFIG } from './alert.interface';
+import {
+	Alert,
+	AlertConfig,
+	ALERT_CONFIG_TOKEN,
+	ALERT_DEFAULT_CONFIG
+} from './alert.interface';
 import { CoreService, DomService, Any } from 'wacom';
-
 import { AlertComponent } from './alert.component';
 import { AlertWrapperComponent } from './alert-wrapper/alert-wrapper.component';
 
@@ -28,30 +32,22 @@ export class AlertService {
 	private uniques: Any = {};
 
 	private shortcuts: Any = {
-		tl: "topLeft",
-		tc: "topCenter",
-		tr: "topRight",
-		r: "right",
-		br: "bottomRight",
-		bc: "bottomCenter",
-		bl: "bottomLeft",
-		l: "left",
-		c: "center"
+		tl: 'topLeft',
+		tc: 'topCenter',
+		tr: 'topRight',
+		r: 'right',
+		br: 'bottomRight',
+		bc: 'bottomCenter',
+		bl: 'bottomLeft',
+		l: 'left',
+		c: 'center'
 	};
 
 	show(opts: Alert | string) {
-		if (typeof opts === 'string') {
-			opts = {
-				text: (opts as string)
-			}
-		}
+		const options: Alert = (typeof opts === 'string' ? { text: opts } : opts || {}) as Alert;
 
-		if (!opts) {
-			opts = {};
-		}
-
-		if (!opts.type) {
-			opts.type = 'info';
+		if (!options.type) {
+			options.type = 'info';
 		}
 
 		// for (let each in this.config) {
@@ -66,13 +62,13 @@ export class AlertService {
 		// 	opts.position = this.shortcuts[opts.position];
 		// }
 
-		if (!opts.position) {
-			opts.position = 'bottomRight';
+		if (!options.position) {
+			options.position = 'bottomRight';
 		}
 
 		let content: any;
 
-		opts.close = () => {
+		options.close = () => {
 			if (content) content.componentRef.destroy();
 
 			component.nativeElement.remove();
@@ -80,15 +76,21 @@ export class AlertService {
 			// if (typeof (opts as Alert).onClose == 'function') (opts as Alert).onClose();
 		};
 
-		let component = this._dom.appendById(AlertComponent, opts, opts.position);
+		const component = this._dom.appendById(
+			AlertComponent,
+			options,
+			options.position
+		);
 
 		// if (typeof opts.component == 'string' && this.config.alerts[opts.component]) {
 		// 	opts.component = this.config.alerts[opts.component];
 		// }
 
-		if (typeof opts.component == 'function') {
-			const el = component.nativeElement.children[0].children[0].children[0] as HTMLElement;
-			content = this._dom.appendComponent(opts.component, opts, el);
+		if (typeof options.component == 'function') {
+			const el = component.nativeElement.children[0].children[0]
+				.children[0] as HTMLElement;
+
+			content = this._dom.appendComponent(options.component, opts, el);
 		}
 
 		// if (opts.unique) {
@@ -102,23 +104,18 @@ export class AlertService {
 	}
 
 	open(opts: Alert | string) {
-		if (typeof opts === 'string') {
-			this.show({
-				text: (opts as string)
-			});
-		} else {
-			this.show(opts);
-		}
+		this.show(opts);
 	}
 
 	info(opts: Alert | string) {
 		if (typeof opts === 'string') {
 			this.show({
-				text: (opts as string),
+				text: opts,
 				type: 'info'
-			});
+			} as Alert);
 		} else {
 			opts.type = 'info';
+
 			this.show(opts);
 		}
 	}
@@ -126,11 +123,12 @@ export class AlertService {
 	success(opts: Alert | string) {
 		if (typeof opts === 'string') {
 			this.show({
-				text: (opts as string),
+				text: opts,
 				type: 'success'
-			});
+			} as Alert);
 		} else {
 			opts.type = 'success';
+
 			this.show(opts);
 		}
 	}
@@ -138,11 +136,12 @@ export class AlertService {
 	warning(opts: Alert | string) {
 		if (typeof opts === 'string') {
 			this.show({
-				text: (opts as string),
+				text: opts,
 				type: 'warning'
-			});
+			} as Alert);
 		} else {
 			opts.type = 'warning';
+
 			this.show(opts);
 		}
 	}
@@ -150,11 +149,12 @@ export class AlertService {
 	error(opts: Alert | string) {
 		if (typeof opts === 'string') {
 			this.show({
-				text: (opts as string),
+				text: opts,
 				type: 'error'
-			});
+			} as Alert);
 		} else {
 			opts.type = 'error';
+
 			this.show(opts);
 		}
 	}
@@ -162,28 +162,29 @@ export class AlertService {
 	question(opts: Alert | string) {
 		if (typeof opts === 'string') {
 			this.show({
-				text: (opts as string),
+				text: opts,
 				type: 'question'
-			});
+			} as Alert);
 		} else {
 			opts.type = 'question';
+
 			this.show(opts);
 		}
 	}
 
 	destroy() {
-		this._core.document.getElementById("bottomRight").innerHTML = "";
+		this._core.document.getElementById('bottomRight').innerHTML = '';
 
-		this._core.document.getElementById("bottomLeft").innerHTML = "";
+		this._core.document.getElementById('bottomLeft').innerHTML = '';
 
-		this._core.document.getElementById("bottomCenter").innerHTML = "";
+		this._core.document.getElementById('bottomCenter').innerHTML = '';
 
-		this._core.document.getElementById("topRight").innerHTML = "";
+		this._core.document.getElementById('topRight').innerHTML = '';
 
-		this._core.document.getElementById("topLeft").innerHTML = "";
+		this._core.document.getElementById('topLeft').innerHTML = '';
 
-		this._core.document.getElementById("topCenter").innerHTML = "";
+		this._core.document.getElementById('topCenter').innerHTML = '';
 
-		this._core.document.getElementById("center").innerHTML = "";
+		this._core.document.getElementById('center').innerHTML = '';
 	}
 }

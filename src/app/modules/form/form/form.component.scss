@@ -1,12 +1,27 @@
 .w-forms {
   position: relative;
-  margin: 10px 0;
-  &__title {
+  margin: 0;
+
+  form-component {
+    margin-bottom: 20px;
     display: block;
-    font-size: var(--fs)8px;
-    font-weight: var(--ff-bold);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__title {
+    letter-spacing: 0;
+    line-height: 23px;
+    font-weight: 500;
+    font-size: 22px;
     color: var(--c-text-primary);
-    text-align: center;
-    margin-bottom: 15px;  
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: var(--b-radius);
+    margin: 0;
+    margin-bottom: 25px;
   }
 }

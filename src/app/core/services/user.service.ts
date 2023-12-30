@@ -3,12 +3,13 @@ import {
 	MongoService,
 	FileService,
 	HttpService,
-	AlertService,
-	CoreService
+	CoreService,
+	StoreService
 } from 'wacom';
+import { AlertService } from 'src/app/modules/alert/alert.service';
 import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
-import { User } from 'src/app/core';
+import { User } from '../interfaces/user';
 
 interface AnyUser {
 	[key: string]: User;
@@ -18,9 +19,29 @@ interface AnyUser {
 	providedIn: 'root'
 })
 export class UserService {
+	mode = '';
+
+	set(mode = ''): void {
+		if (mode) {
+			this._store.set('mode', mode);
+
+			(document.body.parentNode as HTMLElement).classList.add(mode);
+		} else {
+			this._store.remove('mode');
+
+			(document.body.parentNode as HTMLElement).classList.remove('dark');
+		}
+
+		this.mode = mode;
+	}
+
 	user: User = this.new();
 
 	roles = ['admin'];
+
+	role(role: string): boolean {
+		return !!this.user.is[role];
+	}
 
 	users: User[] = [];
 
@@ -32,8 +53,17 @@ export class UserService {
 		private _http: HttpService,
 		private _file: FileService,
 		private _core: CoreService,
-		private _router: Router
+		private _router: Router,
+		private _store: StoreService
 	) {
+		this._store.get('mode', (mode: string) => {
+			if (mode) {
+				this.mode = mode;
+
+				(document.body.parentNode as HTMLElement).classList.add(mode);
+			}
+		});
+
 		this._file.add({
 			id: 'userAvatarUrl',
 			resize: 256,
@@ -59,7 +89,7 @@ export class UserService {
 		if (localStorage.getItem('waw_user')) {
 			this.user = JSON.parse(localStorage.getItem('waw_user') as string);
 
-			this._core.emit('us.user');
+			this._core.done('us.user');
 
 			this.load();
 		}
@@ -75,7 +105,7 @@ export class UserService {
 				if (user) {
 					this.user = user;
 
-					this._core.emit('us.user');
+					this._core.done('us.user');
 
 					localStorage.setItem('waw_user', JSON.stringify(user));
 				} else {

@@ -123,7 +123,7 @@ export class TableComponent implements OnInit, AfterContentInit {
 		this.config.page = Math.ceil(this.rows.length / this.config.perPage);
 	}
 
-	isLast(): void {
+	isLast(): boolean {
 		return (
 			(this.rows &&
 				this.config.page ==

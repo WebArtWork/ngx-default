@@ -1,5 +1,12 @@
-import { Component, ContentChild, ElementRef, Input, ViewChild } from '@angular/core';
+import {
+	Component,
+	ContentChild,
+	ElementRef,
+	Input,
+	ViewChild
+} from '@angular/core';
 import { ItemDirective } from './list.directive';
+
 @Component({
 	selector: 'wlist',
 	templateUrl: './list.component.html',
@@ -19,21 +26,23 @@ export class ListComponent {
 
 		const ele = this.container.nativeElement;
 
-		if (
-			!this._itemHeight &&
-			ele.children.length
-		) {
+		if (!this._itemHeight && ele.children.length) {
 			this._itemHeight = ele.children[0].clientHeight;
 		}
 
 		if (!this._itemHeight) return;
-		console.log(ele.scrollTop, this._itemHeight * this.limit * this._devide);
+
+		console.log(
+			ele.scrollTop,
+			this._itemHeight * this.limit * this._devide
+		);
 
 		if (
-			ele.scrollTop > (this._itemHeight * this.limit * this._devide) &&
+			ele.scrollTop > this._itemHeight * this.limit * this._devide &&
 			this.limit < this.items.length
 		) {
 			this._load();
+
 			if (this._devide < 0.8) {
 				this._devide += 0.2;
 			}
@@ -42,7 +51,7 @@ export class ListComponent {
 
 	private _load = () => {
 		this.limit += 100;
-	}
+	};
 
 	private _itemHeight: number;
 

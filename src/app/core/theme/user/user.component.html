@@ -11,18 +11,7 @@
 					<span class="material-icons">home</span>
 				</a>
 			</li>
-			<li class="nav__li" *ngIf="us.user.is['admin']">
-				<a
-					[routerLinkActiveOptions]="{ exact: true }"
-					routerLinkActive="_activeLink"
-					routerLink="/admin/users"
-					(click)="show = false"
-					class="nav__a"
-				>
-					<span class="material-icons">people</span>
-				</a>
-			</li>
-			<li class="nav__li _burger">
+			<li class="nav__li _burger" (click)="showDesktop = !showDesktop">
 				<a
 					class="nav__toggle"
 					(click)="show=!show"
@@ -32,17 +21,25 @@
 				</a>
 			</li>
 		</ul>
-		<div class="nav__burger" [class._active]="show">
+	</nav>
+
+	<div class="main" [class.showTable]="showDesktop">
+		<div class="fade" [@showInOut]="show" *ngIf="show"></div>
+		<div class="nav__burger _active" [class._active]="show">
 			<div class="nav__burger-list">
 				<div class="theme-switch">
 					<span
 						class="material-icons"
-						*ngIf="!mode"
-						(click)="set('dark')"
+						*ngIf="!us.mode"
+						(click)="us.set('dark')"
 					>
 						dark_mode
 					</span>
-					<span class="material-icons" *ngIf="mode" (click)="set()">
+					<span
+						class="material-icons"
+						*ngIf="us.mode"
+						(click)="us.set()"
+					>
 						light_mode
 					</span>
 				</div>
@@ -59,11 +56,41 @@
 					/>
 					<div class="name">{{us.user.name || "Profile"}}</div>
 				</a>
+				<a
+					[routerLinkActiveOptions]="{ exact: true }"
+					routerLinkActive="_activeLink"
+					routerLink="/admin/users"
+					class="nav__burger-link"
+					*ngIf="us.role('admin')"
+					(click)="show = false"
+				>
+					<span class="material-icons">people</span>
+					<span translate>Theme.Users</span>
+				</a>
+				<a
+					[routerLinkActiveOptions]="{ exact: true }"
+					routerLinkActive="_activeLink"
+					routerLink="/admin/forms"
+					class="nav__burger-link"
+					*ngIf="us.role('admin')"
+					(click)="show = false"
+				>
+					<span class="material-icons">backup_table</span>
+					<span translate>Theme.Forms</span>
+				</a>
+				<a
+					[routerLinkActiveOptions]="{ exact: true }"
+					routerLinkActive="_activeLink"
+					routerLink="/admin/translates"
+					class="nav__burger-link"
+					*ngIf="us.role('admin')"
+					(click)="show = false"
+				>
+					<span class="material-icons">translate</span>
+					<span translate>Theme.Translates</span>
+				</a>
 			</div>
 		</div>
-	</nav>
-	<div class="main">
-		<div class="fade" [@showInOut]="show" *ngIf="show"></div>
 		<router-outlet></router-outlet>
 	</div>
 </div>

@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { ButtonTypes } from './button.interface';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ButtonTypes } from './button.types';
 
 @Component({
 	selector: 'wbutton',
@@ -7,7 +7,9 @@ import { ButtonTypes } from './button.interface';
 	styleUrls: ['./button.component.scss']
 })
 export class ButtonComponent {
-	@Input() type: ButtonTypes = ButtonTypes.PRIMARY;
+	readonly types = ButtonTypes;
+
+	@Input() type = ButtonTypes[0];
 
 	@Input() disabled = false;
 
@@ -15,11 +17,17 @@ export class ButtonComponent {
 
 	@Input() click: (() => void) | undefined;
 
-	readonly types = ButtonTypes;
+	@Output() wClick = new EventEmitter();
 
 	clicked(): void {
+		if (this.disabled) {
+			return;
+		}
+
 		if (typeof this.click === 'function') {
 			this.click();
 		}
+
+		this.wClick.emit();
 	}
 }

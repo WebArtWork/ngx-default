@@ -1,4 +1,4 @@
 export const environment = {
 	production: true,
-	url: 'https://new.webart.work'
+	url: 'https://webart.work'
 };

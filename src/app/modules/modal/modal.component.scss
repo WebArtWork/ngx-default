@@ -15,10 +15,13 @@
   position: relative;
   background-color: #fff;
   margin: 15% auto; /* 15% from the top and centered */
-  padding: 20px;
+  padding: 40px 20px 20px 20px;
   border: 1px solid #888;
   min-width: 20%; /* Could be more or less, depending on screen size */
   max-width: 80%; /* Could be more or less, depending on screen size */
+  @media screen and (max-width: 767px) {
+    max-width: 100% !important;
+  }
 }
 
 /* The Close Button */
@@ -26,7 +29,7 @@
   color: #aaa;
   position: absolute;
   right: 10px;
-  top: 3px;
+  top: 10px;
   font-size: 32px;
   line-height: 1;
 }

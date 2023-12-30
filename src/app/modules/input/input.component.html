@@ -1,4 +1,4 @@
-<div
+<label
 	class="w-forms"
 	*ngIf="
 		type !== 'radio' &&
@@ -8,9 +8,14 @@
 >
 	<span class="w-forms__title" *ngIf="label">{{label}}</span>
 	<input
+        type="text"
+		mask
+		[endWith]="endWith"
+		[regex]="regex"
+		placeholder="Enter text..."
 		(keyup.enter)="wSubmit.emit(formControl.value)"
-		class="input w-input__field"
 		[formControl]="formControl"
+		class="input w-input__field"
 		[placeholder]="placeholder"
 		[ngClass]="wClass"
 		[type]="type"
@@ -18,13 +23,17 @@
 		#inputEl
 	/>
 	<ng-content></ng-content>
-</div>
+</label>
 <!-- [disabled]="disabled" -->
 
 <ng-container *ngIf="type === 'radio'">
 	<label class="check-lebel" *ngFor="let item of items">
 		<span class="form-label">{{item}}</span>
+		<!-- [formControlName]="formControlName || name" -->
 		<input
+			mask
+			[endWith]="endWith"
+			[regex]="regex"
 			[formControl]="formControl"
 			[ngClass]="wClass"
 			[name]="name"
@@ -37,26 +46,33 @@
 </ng-container>
 
 <ng-container *ngIf="type === 'checkbox'">
-	<label class="check-lebel" [ngClass]="wClass">
+	<label class="container-box">
+		<!-- [formControlName]="formControlName || name" -->
 		<input
+			mask
+			[endWith]="endWith"
+			[regex]="regex"
 			[formControl]="formControl"
 			class="w-input__checkbox"
 			[disabled]="disabled"
-			[checked]="set"
+			[checked]="value"
 			[name]="name"
 			type="checkbox"
 			#inputEl
 		/>
-		<span class="checkbox"></span>
+		<span class="checkmark"></span>
 		<span class="check-text" *ngIf="label">{{label}}</span>
-		<ng-content></ng-content>
 	</label>
 </ng-container>
 
 <ng-container *ngIf="type === 'textarea'">
 	<label class="w-forms">
 		<span class="w-forms__title">{{label}}</span>
+		<!-- [formControlName]="formControlName || name" -->
 		<textarea
+			mask
+			[endWith]="endWith"
+			[regex]="regex"
 			(keyup.enter)="wSubmit.emit(formControl.value)"
 			[formControl]="formControl"
 			[placeholder]="placeholder"

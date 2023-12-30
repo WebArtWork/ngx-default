@@ -1,9 +1,8 @@
 import { InjectionToken } from '@angular/core';
-import { Any } from 'wacom';
 
 export interface Alert {
-	close?: ()=>void;
-	onClose?: ()=>void;
+	close?: () => void;
+	onClose?: () => void;
 	text?: string;
 	type?: string;
 
@@ -14,10 +13,9 @@ export interface Alert {
 	unique?: string;
 	progress?: boolean;
 	position?: string;
-	timeout?: Any;
+	timeout?: any;
 	closable?: boolean;
-	buttons?: Any[];
-	[x: string]: Any;
+	buttons?: any[];
 }
 
 export const DEFAULT_ALERT: AlertConfig = {
@@ -30,7 +28,7 @@ export const DEFAULT_ALERT: AlertConfig = {
 	timeout: 5000,
 	closable: true,
 	buttons: []
-}
+};
 
 export interface AlertConfig {
 	alerts?: object;
@@ -43,8 +41,12 @@ export interface AlertConfig {
 	closable?: boolean;
 	position?: string;
 	timeout?: number;
-	close?: Any;
-	buttons?: Any[];
+	close?: any;
+	buttons?: any[];
 }
-export const ALERT_CONFIG_TOKEN = new InjectionToken<AlertConfig>('alertConfig');
-export const ALERT_DEFAULT_CONFIG: AlertConfig = {}
+
+export const ALERT_CONFIG_TOKEN = new InjectionToken<AlertConfig>(
+	'alertConfig'
+);
+
+export const ALERT_DEFAULT_CONFIG: AlertConfig = {};

@@ -1,5 +1,29 @@
 <div class="wtable">
-	<div class="users__header w-card__header" *ngIf="title">{{title}}</div>
+	<div class="users__header w-card__header" *ngIf="title">
+		<h3 class="w-forms__title">{{title}}</h3>
+		<ng-container *ngIf="config.headerButtons">
+			<ng-container *ngFor="let button of config.headerButtons">
+				<wbutton (click)="button.click()" class="table-plus-btn" *ngIf="config.create" type="button">
+					<i
+						class="material-icons"
+						[title]="button.icon"
+						*ngIf="button.icon"
+					>
+						{{button.icon}}
+					</i>
+					<span *ngIf="button.text">{{button.text}}</span>
+				</wbutton>
+			</ng-container>
+		</ng-container>
+		<wbutton
+			(click)="config.create()"
+			class="table-plus-btn"
+			*ngIf="config.create"
+			type="button"
+		>
+			+ <span>Add new</span>
+		</wbutton>
+	</div>
 	<div class="table-flex _jc-sb _ai-c">
 		<div
 			*ngIf="config.searchable"
@@ -76,9 +100,39 @@
 				</ng-container>
 				<td
 					class="table-body__last-td"
-					*ngIf="config.delete||config.update"
+					*ngIf="config.delete || config.update || config.buttons"
 					data-label="Actions:&nbsp;"
 				>
+				<div class="table__actions">
+					<ng-container *ngIf="config.buttons">
+						<ng-container *ngFor="let button of config.buttons">
+							<i
+								(click)="button.click(row)"
+								class="material-icons"
+								[title]="button.icon"
+								*ngIf="!button.href && !button.hrefFunc"
+							>
+								{{button.icon}}
+							</i>
+							<a routerLink="{{button.href}}" *ngIf="button.href">
+								<i
+									class="material-icons"
+									[title]="button.icon"
+								>
+									{{button.icon}}
+								</i>
+							</a>
+							<a routerLink="{{button.hrefFunc(row)}}" *ngIf="button.hrefFunc">
+								<i
+									class="material-icons"
+									[title]="button.icon"
+								>
+									{{button.icon}}
+								</i>
+							</a>
+						</ng-container>
+					</ng-container>
+
 					<i
 						class="material-icons"
 						*ngIf="config.update"
@@ -93,8 +147,10 @@
 						(click)="config.delete(row)"
 						title="Delete"
 					>
-						delete
+						delete_outline
 					</i>
+				</div>
+
 				</td>
 			</tr>
 		</tbody>
@@ -102,15 +158,15 @@
 			class="table-footer"
 			*ngIf="config.perPage || (config.formCreate && config.create)"
 		>
-			<button
+			<!-- <button
 				*ngIf="config.create"
 				class="table-plus-btn"
 				(click)="config.create()"
 			>
 				+
-			</button>
+			</button> -->
 			<div class="item-page" *ngIf="config.perPage">
-				<div class="item-page__text">Items per page</div>
+				<div class="item-page__text">Showing items per page</div>
 				<div
 					class="item-page__dropdown"
 					(clickOutside)="select_page_size = false"
@@ -150,34 +206,34 @@
 				</div>
 			</div>
 			<div class="table-footer__pagination" *ngIf="config.perPage">
-				<button
-					[disabled]="config.page === 1"
+				<wbutton
 					class="table-footer__arrow _start"
+					[disabled]="config.page === 1"
 					(click)="config.page = 1"
 				>
 					<i class="chevron"></i>
-				</button>
-				<button
-					[disabled]="config.page === 1"
+				</wbutton>
+				<wbutton
 					class="table-footer__arrow _left"
+					[disabled]="config.page === 1"
 					(click)="previous()"
 				>
 					<i class="chevron"></i>
-				</button>
-				<button
+				</wbutton>
+				<wbutton
 					[disabled]="config.page*config.perPage > rows?.length"
 					class="table-footer__arrow _right"
 					(click)="next()"
 				>
 					<i class="chevron"></i>
-				</button>
-				<button
-					[disabled]="isLast()"
+				</wbutton>
+				<wbutton
 					class="table-footer__arrow _end"
+					[disabled]="isLast()"
 					(click)="lastPage()"
 				>
 					<i class="chevron"></i>
-				</button>
+				</wbutton>
 			</div>
 		</tfoot>
 	</table>

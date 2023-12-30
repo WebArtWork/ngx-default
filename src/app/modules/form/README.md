@@ -18,5 +18,5 @@ import { FormService } from 'src/app/modules/forms/form.service';
 ## Step 3: Use button, and modal function
 ### In page.component.html you write this code outside of others:
 ```
-<button (click)='fm.modal()'>+</button>
+<button (click)='fm.modal(form)'>+</button>
 ```

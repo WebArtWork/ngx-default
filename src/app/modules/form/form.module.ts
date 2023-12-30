@@ -1,20 +1,14 @@
-import { CommonModule } from '@angular/common';
-import { InjectionToken, ModuleWithProviders, NgModule } from '@angular/core';
-import { ButtonModule } from '../button/button.module';
-import { InputModule } from '../input/input.module';
-import { FormComponent } from './form/form.component';
-import { ModalComponent } from './modal/modal.component';
-import { ComponentComponent } from './form/component/component.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { FormComponentDirective } from './form.service';
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { FormComponentComponent } from './form/form-component/form-component.component';
+import { ModalFormComponent } from './modals/modal-form/modal-form.component';
+import { ButtonModule } from '../button/button.module';
 import { SelectModule } from '../select/select.module';
-export interface FormConfig {
-	inputs?: object;
-}
-export const CONFIG_TOKEN = new InjectionToken<FormConfig>('formConfig');
-export const DEFAULT_FORM_CONFIG: FormConfig = {
-	inputs: {}
-}
+import { FormComponent } from './form/form.component';
+import { InputModule } from '../input/input.module';
+import { ModalFormButtonComponent } from './modals/modal-form/modal-form-button/modal-form-button.component';
+import { ModalUniqueComponent } from './modals/modal-unique/modal-unique.component';
 
 @NgModule({
 	imports: [
@@ -25,24 +19,12 @@ export const DEFAULT_FORM_CONFIG: FormConfig = {
 		SelectModule
 	],
 	declarations: [
-		ModalComponent,
+		FormComponentComponent,
+		ModalFormComponent,
 		FormComponent,
-		ComponentComponent,
-		FormComponentDirective
+		ModalFormButtonComponent,
+  ModalUniqueComponent
 	],
-	exports: [
-		FormComponent,
-		FormComponentDirective
-	]
+	exports: [FormComponent]
 })
-export class FormModule {
-	static forRoot(config: FormConfig = DEFAULT_FORM_CONFIG): ModuleWithProviders<FormModule> {
-		return {
-			ngModule: FormModule,
-			providers: [{
-				provide: CONFIG_TOKEN,
-				useValue: config
-			}]
-		}
-	}
-}
+export class FormModule {}

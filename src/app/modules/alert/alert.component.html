@@ -23,13 +23,13 @@
 				<div class="waw-alert-message slideIn">{{text}}</div>
 			</div>
 			<div *ngIf="!component && type === 'question'">
-				<button
+				<wbutton
 					class="alert-btn"
 					*ngFor="let b of buttons"
 					(click)="remove(); b.callback&&b.callback();"
 				>
 					{{b.text}}
-				</button>
+				</wbutton>
 			</div>
 			<div
 				class="waw-alert__close"

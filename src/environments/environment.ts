@@ -4,7 +4,7 @@
 
 export const environment = {
 	production: false,
-	url: 'https://new.webart.work'
+	url: 'http://localhost:8080'
 };
 
 /*

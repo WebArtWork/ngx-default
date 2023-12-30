@@ -1,7 +1,6 @@
 <div class="container">
 	<wcard [padding]="true">
 		<div class="profile__header w-card__header">
-			<div>Profile Settings</div>
 			<div>
 				<div class="avatar _profile">
 					<img
@@ -19,26 +18,23 @@
 		</div>
 		<div class="profile__body">
 			<wform
+				*ngIf="user"
 				(wChange)="update($event)"
 				[config]="formProfile"
-				*ngIf="showForm"
-				#form
+				[submition]="user"
 			></wform>
 
 			<div class="profile__footer">
 				<div class="profile__logout">
-					<wbutton (click)="us.logout()" [type]="buttonTypes.DANGER">
+					<wbutton (click)="us.logout()" type="danger">
 						<span class="material-icons">logout</span>
-						Logout
+						<span translate>Profile.Logout</span>
 					</wbutton>
 				</div>
 
 				<div class="profile__password">
-					<wbutton
-						(click)="change_password()"
-						[type]="buttonTypes.LINK"
-					>
-						Change Password
+					<wbutton (click)="change_password()" type="link" translate>
+						Profile.Change Password
 					</wbutton>
 				</div>
 			</div>
