@@ -1,4 +1,5 @@
 @import 'angular';
+@import '/src/scss/utils/vars';
 /*  WRAPPER STYLE  */
 .wrapper {
 	position: fixed;
@@ -6,7 +7,7 @@
 	height: 100%;
 	overflow: hidden;
 	@include flexBox(flex, column, null, null, null);
-	background: var(--c-bg-primary);
+	background: $c-bg-primary;
 	transition: all 0.5s ease-in-out;
 	.main {
 		flex-grow: 1;
@@ -48,7 +49,7 @@
 /*  NAV STYLE  */
 .nav {
 	transition: all 0.5s ease-in-out;
-	background: var(--c-basic);
+	background: $c-basic;
 	width: 100%;
 	@include flexBox(flex, null, space-between, center, null);
 	min-height: 50px;
@@ -82,7 +83,7 @@
 	}
 	&__a {
 		cursor: pointer;
-		color: var(--c-white);
+		color: $c-white;
 		font-size: var(--fs) - 2px;
 		padding: 5px 10px;
 		border-radius: var(--b-radius);
@@ -96,7 +97,7 @@
 			position: absolute;
 			width: 5px;
 			height: 5px;
-			background-color: var(--c-white);
+			background-color: $c-white;
 			bottom: -1px;
 			border-radius: var(--b-radius-img);
 			transform: translateY(15px);
@@ -121,7 +122,7 @@
 			}
 		}
 		.material-icons {
-			color: var(--c-white);
+			color: $c-white;
 			width: 24px;
 		}
 	}
@@ -150,13 +151,13 @@
 			top: -7px;
 			top: 0;
 			transform: rotate(45deg);
-			background: var(--c-white);
+			background: $c-white;
 		}
 		&-line:after {
 			bottom: -7px;
 			top: 0;
 			transform: rotate(-45deg);
-			background: var(--c-white);
+			background: $c-white;
 		}
 		@media screen and (max-width: 767px) {
 			.nav__toggle-line, .nav__toggle-line:before, .nav__toggle-line:after{
@@ -165,16 +166,16 @@
 			&-line:before {
 				top: -7px;
 				transform: unset;
-				background: var(--c-white);
+				background: $c-white;
 			}
 			&-line:after {
 				top: 7px;
 				transform: unset;
-				background: var(--c-white);
+				background: $c-white;
 			}
 		}
 		&._active &-line {
-			background: var(--c-white);
+			background: $c-white;
 			
 			&:before,
 			&:after {

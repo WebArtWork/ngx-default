@@ -1,56 +1,114 @@
-:root {
-    // const
-    --c-white: #fff;
-    --c-black: #000;
-    --c-grey: #e7e7e7;
-    --c-grey-dark: #bfbfbf;
+    $default-c-white: #fff;
+    $c-white: if(variable-exists(--c-white), var(--c-white), $default-c-white);
+
+    $default-c-black: #000;
+    $c-black: if(variable-exists(--c-black), var(--c-black), $default-c-black);
+
+    $default-c-grey: #e7e7e7;
+    $c-grey: if(variable-exists(--c-grey), var(--c-grey), $default-c-grey);
+
+    $default-c-grey-dark: #bfbfbf;
+    $c-grey-dark: if(variable-exists(--c-grey-dark), var(--c-grey-dark), $default-c-grey-dark);
+
 
     // theme
-    --c-basic: #3558ae;
-    --c-primary: #256eff;
-    --c-primary-hover: #0051f1;
-    --c-secondary: red;
-    --c-bg-primary: #f3f4f7;
-    --c-bg-secondary: #ffffff;
-    --c-bg-tertiary: #fcfdfe;
-    --c-border: #f0f1f7;
-    --c-shadow: #f3f3f3;
-    --c-text-primary: #666666;
-    --c-text-secondary: #19235c;
-    --c-placeholder: #adb8c6;
+    $default-c-basic: #3558ae;
+    $c-basic: if(variable-exists(--c-basic), var(--c-basic), $default-c-basic);
+
+    $default-c-primary: #256eff;
+    $c-primary: if(variable-exists(--c-primary), var(--c-primary), $default-c-primary);
+
+    $default-c-primary-hover: #0051f1;
+    $c-primary-hover: if(variable-exists(--c-primary-hover), var(--c-primary-hover), $default-c-primary-hover);
+
+    $default-c-secondary: red;
+    $c-secondary: if(variable-exists(--c-secondary), var(--c-secondary), $default-c-secondary);
+
+    $default-c-bg-primary: #f3f4f7;
+    $c-bg-primary: if(variable-exists(--c-bg-primary), var(--c-bg-primary), $default-c-bg-primary);
+
+    $default-c-bg-secondary: #ffffff;
+    $c-bg-secondary: if(variable-exists(--c-bg-secondary), var(--c-bg-secondary), $default-c-bg-secondary);
+
+    $default-c-bg-tertiary: #fcfdfe;
+    $c-bg-tertiary: if(variable-exists(--c-bg-tertiary), var(--c-bg-tertiary), $default-c-bg-tertiary);
+
+    $default-c-border: #f0f1f7;
+    $c-border: if(variable-exists(--c-border), var(--c-border), $default-c-border);
+
+    $default-c-shadow: #f3f3f3;
+    $c-shadow: if(variable-exists(--c-shadow), var(--c-shadow), $default-c-shadow);
+
+    $default-c-text-primary: #666666;
+    $c-text-primary: if(variable-exists(--c-text-primary), var(--c-text-primary), $default-c-text-primary);
+
+    $default-c-text-secondary: #19235c;
+    $c-text-secondary: if(variable-exists(--c-text-secondary), var(--c-text-secondary), $default-c-text-secondary);
+
+    $default-c-placeholder: #adb8c6;
+    $c-placeholder: if(variable-exists(--c-placeholder), var(--c-placeholder), $default-c-placeholder);
 
     // classic
-    --c-warn: #e67e22;
-    --c-error: #e74c3c;
-    --c-error-hover: #d62c1a;
-    --c-success: #14c76e;
-    --c-info: #17a2b8;
+    $default-c-warn: #e67e22;
+    $c-warn: if(variable-exists(--c-warn), var(--c-warn), $default-c-warn);
+
+    $default-c-error: #e74c3c;
+    $c-error: if(variable-exists(--c-error), var(--c-error), $default-c-error);
+
+    $default-c-error-hover: #d62c1a;
+    $c-error-hover: if(variable-exists(--c-error-hover), var(--c-error-hover), $default-c-error-hover);
+
+    $default-c-success: #14c76e;
+    $c-success: if(variable-exists(--c-success), var(--c-success), $default-c-success);
+
+    $default-c-info: #17a2b8;
+    $c-info: if(variable-exists(--c-info), var(--c-info), $default-c-info);
 
     // geometry
-    --container: 1210px;
-    --b-radius: 8px;
-    --b-radius-card: 10px;
-    --b-radius-btn: 10px;
-    --b-radius-img: 50%;
-	--padding: 10px;
-    --fs: 16px;
-    --ff-bold: bold;
-    --ff-base: "Poppins",
+    $default-container: 1210px;
+    $container: if(variable-exists(--container), var(--container), $default-container);
+
+    $default-b-radius: 8px;
+    $b-radius: if(variable-exists(--b-radius), var(--b-radius), $default-b-radius);
+
+    $default-b-radius-card: 10px;
+    $b-radius-card: if(variable-exists(--b-radius-card), var(--b-radius-card), $default-b-radius-card);
+
+    $default-b-radius-btn: 10px;
+    $b-radius-btn: if(variable-exists(--b-radius-btn), var(--b-radius-btn), $default-b-radius-btn);
+
+    $default-b-radius-img: 50%;
+    $b-radius-img: if(variable-exists(--b-radius-img), var(--b-radius-img), $default-b-radius-img);
+
+    $default-padding: 10px;
+    $padding: if(variable-exists(--padding), var(--padding), $default-padding);
+
+    $default-fs: 16px;
+    $fs: if(variable-exists(--fs), var(--fs), $default-fs);
+
+    $default-ff-bold: bold;
+    $ff-bold: if(variable-exists(--ff-bold), var(--ff-bold), $default-ff-bold);
+
+    $default-ff-base: "Poppins",
         sans-serif;
-    --letter-spacing: 0.3px;
-    --transition: .3s all ease-in-out;
-}
+    $ff-base: if(variable-exists(--ff-base), var(--ff-base), $default-ff-base);
+
+    $default-letter-spacing: 0.3px;
+    $letter-spacing: if(variable-exists(--letter-spacing), var(--letter-spacing), $default-letter-spacing);
+
+    $default-transition: .3s all ease-in-out;
+    $transition: if(variable-exists(--transition), var(--ransition), $default-transition);
 
 
 
-html.dark:root {
-    --c-basic: #333;
-	--c-bg-primary: #282828;
-	--c-bg-secondary: #343434;
-	--c-bg-tertiary: #404040;
-    --c-border: #404040;
-    --c-shadow: #444444;
-    --c-text-primary: #ffffff;
-    --c-text-secondary: #ffffff;
-    --c-placeholder: #7a7a7a;
-}
+    html.dark:root {
+        --c-basic: #333;
+        --c-bg-primary: #282828;
+        --c-bg-secondary: #343434;
+        --c-bg-tertiary: #404040;
+        --c-border: #404040;
+        --c-shadow: #444444;
+        --c-text-primary: #ffffff;
+        --c-text-secondary: #ffffff;
+        --c-placeholder: #7a7a7a;
+    }

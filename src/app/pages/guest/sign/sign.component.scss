@@ -11,7 +11,7 @@
 
 .auth-wrapper {
   @include flexBox(flex, null, center, center, null);
-  background: var(--c-bg-primary);
+  background: $c-bg-primary;
   flex-grow: 1;
   padding: 20px;
   transition: all .3s;
@@ -205,7 +205,7 @@ wform {
   }
 
   .icon-visibility {
-    color: var(--c-primary);
+    color: $c-primary;
   }
 }
 @media screen and (max-width: 768px) {

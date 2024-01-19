@@ -1,3 +1,6 @@
+@import '/src/scss/utils/vars';
+@import 'angular';
+
 .w-checkbox {
     &__body {
         display: inline-flex;
@@ -12,10 +15,10 @@
             margin-right: 6px;
         }
         &:hover {
-            background: rgba(var(--c-primary), 0.09);
+            background: rgba($c-primary, 0.09);
         }
         &:hover .w-checkbox__svg {
-            border-color: var(--c-primary);
+            border-color: $c-primary;
         }
         @include bp-max(md) {
             width: 100%;
@@ -26,8 +29,8 @@
     &__input {
         display: none;
         &:checked+.w-checkbox__body .w-checkbox__svg {
-            background: var(--c-primary);
-            border-color: var(--c-primary);
+            background: $c-primary;
+            border-color: $c-primary;
             animation: wave 0.4s ease;
         }
         &:checked+.w-checkbox__body .w-checkbox__svg svg {

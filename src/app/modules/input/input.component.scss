@@ -39,13 +39,13 @@
 
     &:focus {
       transition: var(--transition);
-      border-color: var(--c-primary);
+      border-color: $c-primary;
     }
 
     &:disabled {
-      background-color: var(--c-grey);
-      border-color: var(--c-grey);
-      color: var(--c-grey);
+      background-color: $c-grey;
+      border-color: $c-grey;
+      color: $c-grey;
       cursor: default;
       opacity: 0.6;
     }
@@ -94,8 +94,8 @@
       width: 7px;
       display: block;
       content: '';
-      border-bottom: 2px solid var(--c-primary);
-      border-right: 2px solid var(--c-primary);
+      border-bottom: 2px solid $c-primary;
+      border-right: 2px solid $c-primary;
     }
   }
 }
@@ -135,7 +135,7 @@
     background-color: #0f353d60;
    }
    .container-box input:checked~.checkmark {
-    background-color: var(--c-primary);
+    background-color: $c-primary;
    }
    .checkmark:after {
     content: "";

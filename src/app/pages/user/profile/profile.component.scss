@@ -1,4 +1,5 @@
 @import 'angular';
+@import '/src/scss/utils/vars';
 
 :host {
   width: 100%;
@@ -86,13 +87,13 @@
     width: 24px;
     height: 24px;
     border-radius: var(--b-radius-img);
-    background: var(--c-primary);
+    background: $c-primary;
     @include flexBox(flex, null, center, center, null);
     transition: var(--transition);
   }
 
   &__icon {
-    color: var(--c-white);
+    color: $c-white;
     font-size: var(--fs);
   }
 }

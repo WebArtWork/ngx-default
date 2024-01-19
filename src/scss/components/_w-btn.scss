@@ -1,12 +1,14 @@
+@import '/src/scss/utils/vars';
+
 .w-btn,
 button {
   font-size: var(--fs);
   font-weight: 500;
   font-family: var(--ff-base);
-  background-color: var(--c-primary);
+  background-color: $c-primary;
   border-radius: var(--b-radius);
   transition: var(--transition);
-  color: var(--c-white);
+  color: $c-white;
   position: relative;
   line-height: 19px;
   text-align: center;
@@ -17,16 +19,16 @@ button {
 
 
   &._primary {
-    background-color: var(--c-primary);
+    background-color: $c-primary;
 
     &:hover {
-      background-color: var(--c-primary-hover);
+      background-color: $c-primary-hover;
     }
   }
 
   &._second {
     border: 1px solid #256EFF;
-    background-color: var(--c-white);
+    background-color: $c-white;
     color: #256EFF;
   }
 
@@ -51,11 +53,11 @@ button {
   }
 
   &:disabled {
-    background-color: var(--c-grey-dark);
+    background-color: $c-grey-dark;
     cursor: default;
 
     &:hover {
-      background-color: var(--c-grey-dark);
+      background-color: $c-grey-dark;
     }
   }
 }

@@ -1,3 +1,6 @@
+@import '/src/scss/utils/vars';
+@import 'angular';
+
 :host {
   position: relative;
 }
@@ -52,6 +55,6 @@
   }
 
   .icon-visibility {
-    color: var(--c-primary);
+    color: $c-primary;
   }
 }

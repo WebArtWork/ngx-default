@@ -1,33 +1,27 @@
 import {
-	Any,
 	MongoService,
 	FileService,
 	HttpService,
-	CoreService,
-	StoreService
+	CoreService
 } from 'wacom';
 import { AlertService } from 'src/app/modules/alert/alert.service';
 import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { User } from '../interfaces/user';
 
-interface AnyUser {
-	[key: string]: User;
-}
-
 @Injectable({
 	providedIn: 'root'
 })
 export class UserService {
-	mode = '';
+	mode = localStorage.getItem('waw_user_mode') || '';
 
 	set(mode = ''): void {
 		if (mode) {
-			this._store.set('mode', mode);
+			localStorage.setItem('waw_user_mode', mode);
 
 			(document.body.parentNode as HTMLElement).classList.add(mode);
 		} else {
-			this._store.remove('mode');
+			localStorage.removeItem('waw_user_mode');
 
 			(document.body.parentNode as HTMLElement).classList.remove('dark');
 		}
@@ -35,7 +29,9 @@ export class UserService {
 		this.mode = mode;
 	}
 
-	user: User = this.new();
+	user: User = localStorage.getItem('waw_user')
+		? JSON.parse(localStorage.getItem('waw_user') as string)
+		: this.new();
 
 	roles = ['admin'];
 
@@ -45,7 +41,7 @@ export class UserService {
 
 	users: User[] = [];
 
-	_users: AnyUser = {};
+	_users: Record<string, User> = {};
 
 	constructor(
 		private _alert: AlertService,
@@ -53,16 +49,11 @@ export class UserService {
 		private _http: HttpService,
 		private _file: FileService,
 		private _core: CoreService,
-		private _router: Router,
-		private _store: StoreService
+		private _router: Router
 	) {
-		this._store.get('mode', (mode: string) => {
-			if (mode) {
-				this.mode = mode;
-
-				(document.body.parentNode as HTMLElement).classList.add(mode);
-			}
-		});
+		if (this.mode) {
+			(document.body.parentNode as HTMLElement).classList.add(this.mode);
+		}
 
 		this._file.add({
 			id: 'userAvatarUrl',
@@ -77,7 +68,10 @@ export class UserService {
 
 		this._mongo.config('user', {
 			replace: {
-				data: (data: Any, cb: (data: Any) => Any) => {
+				data: (
+					data: Record<string, User>,
+					cb: (data: Record<string, User>) => Record<string, User>
+				) => {
 					if (typeof data != 'object') data = {};
 
 					cb(data);
@@ -96,7 +90,7 @@ export class UserService {
 	}
 
 	load(): void {
-		this.user = this._mongo.fetch(
+		this._mongo.fetch(
 			'user',
 			{
 				name: 'me'
@@ -114,19 +108,19 @@ export class UserService {
 			}
 		);
 
-		this.users = this._mongo.get('user', (users: User[], obj: AnyUser) => {
-			this._users = obj;
-		});
+		this.users = this._mongo.get(
+			'user',
+			(users: User[], obj: Record<string, User>) => {
+				this._users = obj;
+			}
+		);
 	}
 
 	new(): User {
 		return {
-			name: '',
-			email: '',
-			thumb: '',
 			is: {},
 			data: {}
-		};
+		} as User;
 	}
 
 	create(user: User): void {

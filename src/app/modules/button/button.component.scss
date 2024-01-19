@@ -1,11 +1,14 @@
+@import '/src/scss/utils/vars';
+@import 'angular';
+
 .w-btn {
-  font-size: var(--fs);
+  font-size: $fs;
   font-weight: 500;
-  font-family: var(--ff-base);
-  background-color: var(--c-primary);
-  border-radius: var(--b-radius-btn);
+  font-family: $ff-base;
+  background-color: $c-primary;
+  border-radius: $b-radius-btn;
   transition: var(--transition);
-  color: var(--c-white);
+  color: $c-white;
   position: relative;
   padding: 11px 25px;
   line-height: 19px;
@@ -21,46 +24,46 @@
   cursor: pointer;
 
   &._primary {
-    background-color: var(--c-primary);
+    background-color: $c-primary;
 
     &:hover {
-      background-color: var(--c-primary-hover);
+      background-color: $c-primary-hover;
     }
   }
 
   &._second {
     border: 1px solid #256EFF;
-    background-color: var(--c-white);
+    background-color: $c-white;
     color: #256EFF;
   }
 
   &._danger {
-    background-color: var(--c-error);
+    background-color: $c-error;
     color: white;
 
     &:hover {
-      background: var(--c-error-hover);
+      background: $c-error-hover;
     }
   }
 
   &._link {
     background: transparent;
-    color: var(--c-text-primary);
+    color: $c-text-primary;
     font-size: 14px;
     font-weight: 400;
 
     &:hover {
-      color: var(--c-text-secondary);
+      color: $c-text-secondary;
     }
   }
 
   &:disabled {
-    background-color: var(--c-grey-dark);
+    background-color: $c-grey-dark;
     cursor: default;
     
 
     &:hover {
-      background-color: var(--c-grey-dark);
+      background-color: $c-grey-dark;
     }
   }
 }

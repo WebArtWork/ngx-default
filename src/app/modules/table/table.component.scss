@@ -1,3 +1,5 @@
+@import '/src/scss/utils/vars';
+@import 'angular';
 // colors
 :root {
 	  // const
@@ -87,12 +89,12 @@ html.dark:root {
 			height: 45px;
 			border-radius: 4px;
 			padding: 5px 12px;
-			background-color: var(--c-primary);
-			color: var(--c-primary);
-			border: 1px solid var(--c-primary);
+			background-color: $c-primary;
+			color: $c-primary;
+			border: 1px solid $c-primary;
 			&:hover{
-				box-shadow: 0 0 3px 0px var(--c-primary);
-				background-color: var(--c-primary);
+				box-shadow: 0 0 3px 0px $c-primary;
+				background-color: $c-primary;
 				color: var(--c-bg-secondary);
 			}
 			span {
@@ -306,7 +308,7 @@ html.dark:root {
 					font-size: 22px;
 					width: 22px;
 					&:hover {
-						color: var(--c-primary);
+						color: $c-primary;
 					}
 				}
 			}
@@ -362,7 +364,7 @@ html.dark:root {
 						position: absolute;
 						width: 2px;
 						height: 90%;
-						background-color: var(--c-grey);
+						background-color: $c-grey;
 						mix-blend-mode: overlay;
 						top: 8%;
 					}
@@ -373,8 +375,8 @@ html.dark:root {
 						position: absolute;
 						width: 10px;
 						height: 10px;
-						border-bottom: 2px solid var(--c-grey);
-						border-right: 2px solid var(--c-grey);
+						border-bottom: 2px solid $c-grey;
+						border-right: 2px solid $c-grey;
 						mix-blend-mode: overlay;
 						transform: rotate(135deg);
 						left: 2px;
@@ -466,7 +468,7 @@ html.dark:root {
 						border:1px solid var(--c-border);
 						cursor: pointer;
 						&:hover {
-							background-color: var(--c-primary);
+							background-color: $c-primary;
 							color: var(--c-bg-secondary);
 						}
 					}
@@ -486,7 +488,7 @@ html.dark:root {
 								text-align: center;
 							}
 							&:hover {
-								background-color: var(--c-primary);
+								background-color: $c-primary;
 								color: var(--c-bg-secondary);
 							}
 						}
