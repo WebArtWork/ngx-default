@@ -2,12 +2,12 @@
 
 .w-btn,
 button {
-  font-size: var(--fs);
+  font-size: $fs;
   font-weight: 500;
-  font-family: var(--ff-base);
+  font-family: $ff-base;
   background-color: $c-primary;
-  border-radius: var(--b-radius);
-  transition: var(--transition);
+  border-radius: $b-radius;
+  transition: $transition;
   color: $c-white;
   position: relative;
   line-height: 19px;
@@ -33,22 +33,22 @@ button {
   }
 
   &._danger {
-    background-color: var(--c-error);
+    background-color: $c-error;
     color: white;
 
     &:hover {
-      background: var(--c-error-hover);
+      background: $c-error-hover;
     }
   }
 
   &._link {
     background: transparent;
-    color: var(--c-text-primary);
+    color: $c-text-primary;
     font-size: 14px;
     font-weight: 400;
 
     &:hover {
-      color: var(--c-text-secondary);
+      color: $c-text-secondary;
     }
   }
 

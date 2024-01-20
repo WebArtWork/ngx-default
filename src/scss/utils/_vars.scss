@@ -40,10 +40,10 @@
     $c-shadow: if(variable-exists(--c-shadow), var(--c-shadow), $default-c-shadow);
 
     $default-c-text-primary: #666666;
-    $c-text-primary: if(variable-exists(--c-text-primary), var(--c-text-primary), $default-c-text-primary);
+    $c-text-primary: if(variable-exists(--c-text-primary), $c-text-primary, $default-c-text-primary);
 
     $default-c-text-secondary: #19235c;
-    $c-text-secondary: if(variable-exists(--c-text-secondary), var(--c-text-secondary), $default-c-text-secondary);
+    $c-text-secondary: if(variable-exists(--c-text-secondary), $c-text-secondary, $default-c-text-secondary);
 
     $default-c-placeholder: #adb8c6;
     $c-placeholder: if(variable-exists(--c-placeholder), var(--c-placeholder), $default-c-placeholder);
@@ -53,10 +53,10 @@
     $c-warn: if(variable-exists(--c-warn), var(--c-warn), $default-c-warn);
 
     $default-c-error: #e74c3c;
-    $c-error: if(variable-exists(--c-error), var(--c-error), $default-c-error);
+    $c-error: if(variable-exists(--c-error), $c-error, $default-c-error);
 
     $default-c-error-hover: #d62c1a;
-    $c-error-hover: if(variable-exists(--c-error-hover), var(--c-error-hover), $default-c-error-hover);
+    $c-error-hover: if(variable-exists(--c-error-hover), $c-error-hover, $default-c-error-hover);
 
     $default-c-success: #14c76e;
     $c-success: if(variable-exists(--c-success), var(--c-success), $default-c-success);
@@ -69,7 +69,7 @@
     $container: if(variable-exists(--container), var(--container), $default-container);
 
     $default-b-radius: 8px;
-    $b-radius: if(variable-exists(--b-radius), var(--b-radius), $default-b-radius);
+    $b-radius: if(variable-exists(--b-radius), $b-radius, $default-b-radius);
 
     $default-b-radius-card: 10px;
     $b-radius-card: if(variable-exists(--b-radius-card), var(--b-radius-card), $default-b-radius-card);
@@ -81,10 +81,10 @@
     $b-radius-img: if(variable-exists(--b-radius-img), var(--b-radius-img), $default-b-radius-img);
 
     $default-padding: 10px;
-    $padding: if(variable-exists(--padding), var(--padding), $default-padding);
+    $padding: if(variable-exists(--padding), $padding, $default-padding);
 
     $default-fs: 16px;
-    $fs: if(variable-exists(--fs), var(--fs), $default-fs);
+    $fs: if(variable-exists(--fs), $fs, $default-fs);
 
     $default-ff-bold: bold;
     $ff-bold: if(variable-exists(--ff-bold), var(--ff-bold), $default-ff-bold);

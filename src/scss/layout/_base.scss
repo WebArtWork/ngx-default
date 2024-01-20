@@ -1,12 +1,13 @@
 // ===== BASE STYLE =====
+@import '/src/scss/utils/vars';
 html {
-    font-size: var(--fs);
+    font-size: $fs;
     overflow: hidden;
     height: 100%;
 }
 body {
-    font-family: var(--ff-base);
-    color: var(--c-text-primary);
+    font-family: $ff-base;
+    color: $c-text-primary;
     line-height: 1.4;
     position: relative;
     overflow: hidden;
@@ -18,7 +19,7 @@ body {
 .container {
     margin-left: auto;
     margin-right: auto;
-    padding: var(--padding);
+    padding: $padding;
     max-width: 100%;
     width: 100%;
 }
