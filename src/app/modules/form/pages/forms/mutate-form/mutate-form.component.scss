@@ -14,7 +14,7 @@
         input{
             padding: 10px 20px 10px 20px;
             border-radius: 15px;
-            border: 2px solid $c-primary;
+            border: 2px solid var(--c-primary);
             height: 100%;
             width: 100%;
         }
@@ -37,7 +37,7 @@
         select{
             padding: 10px 20px 10px 20px;
             border-radius: 15px;
-            border: 2px solid $c-primary;
+            border: 2px solid var(--c-primary);
             width: 100%;
         }
     }
@@ -50,7 +50,7 @@
         width: 100%;
         border-radius: 16px;
         border: none;
-        background: $c-primary;
+        background: var(--c-primary);
         color: #fff;
         cursor: pointer;
         transition: all .3s;
@@ -75,7 +75,7 @@
         margin-bottom: 15px;
         &-title{
             font-weight: 600;
-            color: $c-primary;
+            color: var(--c-primary);
             padding-bottom: 5px;
         }
         &-list{
@@ -96,7 +96,7 @@
             input{
                 padding: 10px 20px 10px 20px;
                 border-radius: 8px;
-                border: 2px solid $c-primary;
+                border: 2px solid var(--c-primary);
                 width: 100%;
             }
         }
@@ -107,7 +107,7 @@
                 height: 42px;
                 border-radius: 8px;
                 border: none;
-                background: $c-primary;
+                background: var(--c-primary);
                 color: #fff;
                 cursor: pointer;
                 transition: all .3s;

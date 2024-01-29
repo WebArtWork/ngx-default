@@ -16,19 +16,19 @@
     // font-size: calc(#{var(--fs)} - 6px);
     font-size: 22px;
     line-height: calc(#{var(--fs)} + 4px);
-    letter-spacing: var(--letter-spacing);
-    transition: var(--transition);
+    letter-spacing: $letter-spacing;
+    transition: $transition;
 
     &._sky {
-      color: var(--c-info);
+      color: $c-info;
     }
 
     &._orange {
-      color: var(--c-warn);
+      color: $c-warn;
     }
 
     &._green {
-      color: var(--c-success);
+      color: $c-success;
     }
   }
 
@@ -55,6 +55,6 @@
   }
 
   .icon-visibility {
-    color: $c-primary;
+    color: var(--c-primary);
   }
 }

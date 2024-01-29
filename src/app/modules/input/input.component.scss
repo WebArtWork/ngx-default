@@ -1,3 +1,4 @@
+@import '/src/scss/utils/vars';
 @import 'angular';
 
 .w-input {
@@ -14,7 +15,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-radius: var(--b-radius);
+    border-radius: $b-radius;
     margin-bottom: 25px;
   }
 
@@ -22,24 +23,24 @@
     height: 42px;
     background-color: transparent;
     border: 1px solid var(--c-border);
-    border-radius: var(--b-radius);
+    border-radius: $b-radius;
     color: var(--c-text-secondary);
-    font-size: calc(#{var(--fs)} - 2px);
-    line-height: calc(#{var(--fs)} + 4px);
-    transition: var(--transition);
+    font-size: calc(#{$fs} - 2px);
+    line-height: calc(#{$fs} + 4px);
+    transition: $transition;
     width: 100%;
     display: block;
-    letter-spacing: var(--letter-spacing);
+    letter-spacing: $letter-spacing;
     padding: 10px;
 
     &::placeholder {
       color: var(--c-placeholder);
-      transition: var(--transition);
+      transition: $transition;
     }
 
     &:focus {
       transition: var(--transition);
-      border-color: $c-primary;
+      border-color: var(--c-primary);
     }
 
     &:disabled {
@@ -94,8 +95,8 @@
       width: 7px;
       display: block;
       content: '';
-      border-bottom: 2px solid $c-primary;
-      border-right: 2px solid $c-primary;
+      border-bottom: 2px solid var(--c-primary);
+      border-right: 2px solid var(--c-primary);
     }
   }
 }
@@ -135,7 +136,7 @@
     background-color: #0f353d60;
    }
    .container-box input:checked~.checkmark {
-    background-color: $c-primary;
+    background-color: var(--c-primary);
    }
    .checkmark:after {
     content: "";

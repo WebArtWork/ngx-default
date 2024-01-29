@@ -1,4 +1,6 @@
 @import "angular";
+@import "/src/scss/utils/vars";
+ 
 
 :host {
   position: fixed;
@@ -11,7 +13,7 @@
 
 .auth-wrapper {
   @include flexBox(flex, null, center, center, null);
-  background: $c-bg-primary;
+  background: var(--c-bg-primary);
   flex-grow: 1;
   padding: 20px;
   transition: all .3s;
@@ -21,7 +23,7 @@
   max-width: 340px;
   width: 100%;
   padding: 30px;
-  border-radius: var(--b-radius-card);
+  border-radius: $b-radius-card;
   box-shadow: 0px 0px 6px var(--c-shadow);
   background: var(--c-bg-secondary);
   display: flex;
@@ -42,14 +44,14 @@
   }
 
   &__title {
-    font-size: var(--fs) + 8px;
-    font-weight: var(--ff-bold);
+    font-size: $fs + 8px;
+    font-weight: $ff-bold;
     color: var(--c-text-primary);
     text-align: center;
     margin-bottom: 15px;
 
     @include bp-max(sm) {
-      font-size: var(--fs) + 2px;
+      font-size: $fs + 2px;
     }
   }
 
@@ -140,7 +142,7 @@
 
   @include bp-max(sm) {
     .form__title {
-      font-size: var(--fs) - 2px;
+      font-size: $fs - 2px;
     }
   }
 }
@@ -163,22 +165,22 @@ wform {
     position: absolute;
     display: inline-block;
     color: var(--c-text-secondary);
-    // font-size: calc(#{var(--fs)} - 6px);
+    // font-size: calc(#{$fs} - 6px);
     font-size: 22px;
-    line-height: calc(#{var(--fs)} + 4px);
-    letter-spacing: var(--letter-spacing);
-    transition: var(--transition);
+    line-height: calc(#{$fs} + 4px);
+    letter-spacing: $letter-spacing;
+    transition: $transition;
 
     &._sky {
-      color: var(--c-info);
+      color: $c-info;
     }
 
     &._orange {
-      color: var(--c-warn);
+      color: $c-warn;
     }
 
     &._green {
-      color: var(--c-success);
+      color: $c-success;
     }
   }
 
@@ -205,7 +207,7 @@ wform {
   }
 
   .icon-visibility {
-    color: $c-primary;
+    color: var(--c-primary);
   }
 }
 @media screen and (max-width: 768px) {

@@ -10,53 +10,15 @@
     $default-c-grey-dark: #bfbfbf;
     $c-grey-dark: if(variable-exists(--c-grey-dark), var(--c-grey-dark), $default-c-grey-dark);
 
-
-    // theme
-    $default-c-basic: #3558ae;
-    $c-basic: if(variable-exists(--c-basic), var(--c-basic), $default-c-basic);
-
-    $default-c-primary: #256eff;
-    $c-primary: if(variable-exists(--c-primary), var(--c-primary), $default-c-primary);
-
-    $default-c-primary-hover: #0051f1;
-    $c-primary-hover: if(variable-exists(--c-primary-hover), var(--c-primary-hover), $default-c-primary-hover);
-
-    $default-c-secondary: red;
-    $c-secondary: if(variable-exists(--c-secondary), var(--c-secondary), $default-c-secondary);
-
-    $default-c-bg-primary: #f3f4f7;
-    $c-bg-primary: if(variable-exists(--c-bg-primary), var(--c-bg-primary), $default-c-bg-primary);
-
-    $default-c-bg-secondary: #ffffff;
-    $c-bg-secondary: if(variable-exists(--c-bg-secondary), var(--c-bg-secondary), $default-c-bg-secondary);
-
-    $default-c-bg-tertiary: #fcfdfe;
-    $c-bg-tertiary: if(variable-exists(--c-bg-tertiary), var(--c-bg-tertiary), $default-c-bg-tertiary);
-
-    $default-c-border: #f0f1f7;
-    $c-border: if(variable-exists(--c-border), var(--c-border), $default-c-border);
-
-    $default-c-shadow: #f3f3f3;
-    $c-shadow: if(variable-exists(--c-shadow), var(--c-shadow), $default-c-shadow);
-
-    $default-c-text-primary: #666666;
-    $c-text-primary: if(variable-exists(--c-text-primary), $c-text-primary, $default-c-text-primary);
-
-    $default-c-text-secondary: #19235c;
-    $c-text-secondary: if(variable-exists(--c-text-secondary), $c-text-secondary, $default-c-text-secondary);
-
-    $default-c-placeholder: #adb8c6;
-    $c-placeholder: if(variable-exists(--c-placeholder), var(--c-placeholder), $default-c-placeholder);
-
     // classic
     $default-c-warn: #e67e22;
     $c-warn: if(variable-exists(--c-warn), var(--c-warn), $default-c-warn);
 
     $default-c-error: #e74c3c;
-    $c-error: if(variable-exists(--c-error), $c-error, $default-c-error);
+    $c-error: if(variable-exists(--c-error), var(--c-error), $default-c-error);
 
     $default-c-error-hover: #d62c1a;
-    $c-error-hover: if(variable-exists(--c-error-hover), $c-error-hover, $default-c-error-hover);
+    $c-error-hover: if(variable-exists(--c-error-hover), var(--c-error-hover), $default-c-error-hover);
 
     $default-c-success: #14c76e;
     $c-success: if(variable-exists(--c-success), var(--c-success), $default-c-success);
@@ -81,10 +43,10 @@
     $b-radius-img: if(variable-exists(--b-radius-img), var(--b-radius-img), $default-b-radius-img);
 
     $default-padding: 10px;
-    $padding: if(variable-exists(--padding), $padding, $default-padding);
+    $padding: if(variable-exists(--padding), var(--padding), $default-padding);
 
     $default-fs: 16px;
-    $fs: if(variable-exists(--fs), $fs, $default-fs);
+    $fs: if(variable-exists(--fs), var(--fs), $default-fs);
 
     $default-ff-bold: bold;
     $ff-bold: if(variable-exists(--ff-bold), var(--ff-bold), $default-ff-bold);
@@ -97,9 +59,23 @@
     $letter-spacing: if(variable-exists(--letter-spacing), var(--letter-spacing), $default-letter-spacing);
 
     $default-transition: .3s all ease-in-out;
-    $transition: if(variable-exists(--transition), var(--ransition), $default-transition);
+    $transition: if(variable-exists(--transition), var(--transition), $default-transition);
 
-
+    // theme
+    :root {
+        --c-basic: #3558ae;
+        --c-primary: #256eff;
+        --c-primary-hover: #0051f1;
+        --c-secondary: red;
+        --c-bg-primary: #f3f4f7;
+        --c-bg-secondary: #ffffff;
+        --c-bg-tertiary: #fcfdfe;
+        --c-border: #f0f1f7;
+        --c-shadow: #f3f3f3;
+        --c-text-primary: #666666;
+        --c-text-secondary: #19235c;
+        --c-placeholder: #adb8c6;
+    }
 
     html.dark:root {
         --c-basic: #333;

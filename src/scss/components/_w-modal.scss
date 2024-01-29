@@ -1,4 +1,5 @@
 @import '/src/scss/utils/vars';
+  
 @import 'angular';
 
 #html .modal {
@@ -6,7 +7,7 @@
 
   &-content {
     background: var(--c-bg-secondary);
-    border-radius: var(--b-radius);
+    border-radius: $b-radius;
     border: 1px solid var(--c-border);
     max-width: 700px;
     padding-top: 45px;

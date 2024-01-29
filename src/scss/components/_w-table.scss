@@ -1,13 +1,14 @@
 @import '/src/scss/utils/vars';
+ 
 @import 'angular';
 // table
 .w-table-wrap {
   background: var(--c-bg-secondary);
   box-shadow: var(--c-shadow);
-  border-radius: var(--b-radius);
+  border-radius: $b-radius;
   padding: 20px;
   width: 100%;
-  transition: var(--transition);
+  transition: $transition;
 
   .w-table {
     border-collapse: collapse;
@@ -21,9 +22,9 @@
       text-align: center;
       border-right: 2px solid var(--c-border);
       border-bottom: 0.5px solid var(--c-border);
-      font-size: var(--fs);
-      line-height: calc(var(--fs) + 8px);
-      letter-spacing: var(--letter-spacing);
+      font-size: $fs;
+      line-height: calc($fs + 8px);
+      letter-spacing: $letter-spacing;
       color: var(--c-text-primary);
       text-overflow: ellipsis;
       overflow: hidden;
@@ -35,7 +36,7 @@
       }
 
       @include bp-max(md) {
-        font-size: calc(var(--fs) - 4px);
+        font-size: calc($fs - 4px);
       }
     }
 
@@ -46,14 +47,14 @@
       vertical-align: middle;
       border-right: 2px solid var(--c-border);
       border-bottom: 2px dashed var(--c-border);
-      font-size: calc(var(--fs) - 2px);
-      line-height: calc(var(--fs) + 8px);
-      letter-spacing: var(--letter-spacing);
+      font-size: calc($fs - 2px);
+      line-height: calc($fs + 8px);
+      letter-spacing: $letter-spacing;
       color: var(--c-text-primary);
       word-break: break-word;
 
       @include bp-max(md) {
-        font-size: calc(var(--fs) - 4px);
+        font-size: calc($fs - 4px);
       }
     }
   }

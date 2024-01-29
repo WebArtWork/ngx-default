@@ -12,6 +12,6 @@
     background-color: $c-white;
 }
 * ::-webkit-scrollbar-thumb {
-    box-shadow: inset 0 0 6px $c-basic;
-    background-color: $c-basic;
+    box-shadow: inset 0 0 6px var(--c-basic);
+    background-color: var(--c-basic);
 }

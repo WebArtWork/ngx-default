@@ -7,7 +7,7 @@
 	height: 100%;
 	overflow: hidden;
 	@include flexBox(flex, column, null, null, null);
-	background: $c-bg-primary;
+	background: var(--c-bg-primary);
 	transition: all 0.5s ease-in-out;
 	.main {
 		flex-grow: 1;
@@ -49,7 +49,7 @@
 /*  NAV STYLE  */
 .nav {
 	transition: all 0.5s ease-in-out;
-	background: $c-basic;
+	background: var(--c-basic);
 	width: 100%;
 	@include flexBox(flex, null, space-between, center, null);
 	min-height: 50px;
@@ -86,7 +86,7 @@
 		color: $c-white;
 		font-size: var(--fs) - 2px;
 		padding: 5px 10px;
-		border-radius: var(--b-radius);
+		border-radius: $b-radius;
 		transition: all 0.5s ease-in-out;
 		display: flex;
 		justify-content: center;
@@ -99,7 +99,7 @@
 			height: 5px;
 			background-color: $c-white;
 			bottom: -1px;
-			border-radius: var(--b-radius-img);
+			border-radius: $b-radius-img;
 			transform: translateY(15px);
 			opacity: 0;
 			@include bp-max(md) {
@@ -265,7 +265,7 @@
 			}
 			.material-icons {
 				color: var(--c-text-primary);
-				font-size: calc(var(--fs) + 32px);
+				font-size: calc($fs + 32px);
 			}
 		}
 	}

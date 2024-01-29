@@ -28,7 +28,7 @@
     right: 25px;
     @include text-default(0, 23px, 500, 20px, var(--c-text-primary));
     @include flexBox(flex, null, space-between, center, null);
-    border-radius: var(--b-radius);
+    border-radius: $b-radius;
   }
 
   &__footer {
@@ -61,7 +61,7 @@
 /*  AVATAR PHOTO STYLE  */
 .avatar {
 
-  border-radius: var(--b-radius-img);
+  border-radius: $b-radius-img;
   border: 1px solid var(--c-border);
   position: relative;
   margin: 0 auto;
@@ -76,7 +76,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: var(--b-radius-img);
+    border-radius: $b-radius-img;
   }
 
   &__upload {
@@ -86,15 +86,15 @@
     bottom: 0px;
     width: 24px;
     height: 24px;
-    border-radius: var(--b-radius-img);
-    background: $c-primary;
+    border-radius: $b-radius-img;
+    background: var(--c-primary);
     @include flexBox(flex, null, center, center, null);
-    transition: var(--transition);
+    transition: $transition;
   }
 
   &__icon {
     color: $c-white;
-    font-size: var(--fs);
+    font-size: $fs;
   }
 }
 

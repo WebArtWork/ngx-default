@@ -1,3 +1,5 @@
+@import '/src/scss/utils/vars';
+@import 'angular';
 .w-forms {
   position: relative;
   margin: 0;
@@ -20,7 +22,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-radius: var(--b-radius);
+    border-radius: $b-radius;
     margin: 0;
     margin-bottom: 25px;
   }

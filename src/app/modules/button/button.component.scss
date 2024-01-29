@@ -5,7 +5,7 @@
   font-size: $fs;
   font-weight: 500;
   font-family: $ff-base;
-  background-color: $c-primary;
+  background-color: var(--c-primary);
   border-radius: $b-radius-btn;
   transition: var(--transition);
   color: $c-white;
@@ -24,10 +24,10 @@
   cursor: pointer;
 
   &._primary {
-    background-color: $c-primary;
+    background-color: var(--c-primary);
 
     &:hover {
-      background-color: $c-primary-hover;
+      background-color: var(--c-primary-hover);
     }
   }
 
@@ -48,12 +48,12 @@
 
   &._link {
     background: transparent;
-    color: $c-text-primary;
+    color: var(--c-text-primary);
     font-size: 14px;
     font-weight: 400;
 
     &:hover {
-      color: $c-text-secondary;
+      color: var(--c-text-secondary);
     }
   }
 

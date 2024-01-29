@@ -1,4 +1,5 @@
 @import '/src/scss/utils/vars';
+ 
 @import 'angular';
 // forms
 .w-forms {
@@ -12,10 +13,10 @@
 	&__title {
 		display: inline-block;
 		color: var(--c-text-primary);
-		// font-size: calc(#{var(--fs)} - 4px);
+		// font-size: calc(#{$fs} - 4px);
 		font-size: 19px;
-		line-height: calc(#{var(--fs)} + 2px);
-		letter-spacing: var(--letter-spacing);
+		line-height: calc(#{$fs} + 2px);
+		letter-spacing: $letter-spacing;
 		// margin-bottom: 6px;
 		font-weight: 500;
 	}
@@ -26,24 +27,24 @@
 		height: 42px;
 		background-color: transparent;
 		border: 1px solid var(--c-border);
-		border-radius: var(--b-radius);
+		border-radius: $b-radius;
 		color: var(--c-text-secondary);
-		font-size: calc(#{var(--fs)} - 2px);
-		line-height: calc(#{var(--fs)} + 4px);
-		transition: var(--transition);
+		font-size: calc(#{$fs} - 2px);
+		line-height: calc(#{$fs} + 4px);
+		transition: $transition;
 		width: 100%;
 		display: block;
-		letter-spacing: var(--letter-spacing);
+		letter-spacing: $letter-spacing;
 		padding: 10px;
 
 		&::placeholder {
 			color: var(--c-placeholder);
-			transition: var(--transition);
+			transition: $transition;
 		}
 
 		&:focus {
-			transition: var(--transition);
-			border-color: $c-primary;
+			transition: $transition;
+			border-color: var(--c-primary);
 		}
 
 		&:disabled {
@@ -74,7 +75,7 @@
 		right: 12px;
 
 		&::before {
-			color: $c-primary;
+			color: var(--c-primary);
 		}
 	}
 

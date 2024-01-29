@@ -28,7 +28,7 @@
     background-color: #0f353d60;
    }
    .container-box input:checked~.checkmark {
-    background-color: $c-primary;
+    background-color: var(--c-primary);
    }
    .checkmark:after {
     content: "";

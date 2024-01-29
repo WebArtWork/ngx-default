@@ -1,4 +1,5 @@
 @import '/src/scss/utils/vars';
+  
 // SWITCH
 .w-switch {
     display: flex;
@@ -12,8 +13,8 @@
     &__input {
         display: none;
         &:checked+.w-switch__slider {
-            background-color: $c-primary;
-            border: 1px solid $c-primary;
+            background-color: var(--c-primary);
+            border: 1px solid var(--c-primary);
         }
         &:focus+.w-switch__slider {
             box-shadow: 0 0 1px var(--c-shadow);
@@ -29,7 +30,7 @@
         background-color: $c-grey;
         border: 1px solid var(--c-border);
         outline: none;
-        transition: var(--transition);
+        transition: $transition;
         &:before {
             position: absolute;
             content: "";
@@ -39,7 +40,7 @@
             top: 50%;
             transform: translateY(-50%);
             background-color: $c-white;
-            transition: var(--transition);
+            transition: $transition;
         }
         &._round {
             border-radius: 34px;
@@ -50,9 +51,9 @@
     }
     &__text {
         margin-left: 10px;
-        font-size: calc(#{var(--fs)} - 2px);
-        line-height: calc(#{var(--fs)} - 2px);
-        letter-spacing: var(--letter-spacing);
+        font-size: calc(#{$fs} - 2px);
+        line-height: calc(#{$fs} - 2px);
+        letter-spacing: $letter-spacing;
         color: var(--c-text);
     }
 }

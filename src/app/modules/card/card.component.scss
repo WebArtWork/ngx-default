@@ -1,6 +1,8 @@
+@import '/src/scss/utils/vars';
+@import 'angular';
 .w-card {
   background: var(--c-bg-secondary);
-  border-radius: var(--b-radius-card);
+  border-radius: $b-radius-card;
   position: relative;
   // box-shadow: 0px 0px 6px var(--c-shadow);
   &._pd {
