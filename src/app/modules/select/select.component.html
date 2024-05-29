@@ -48,6 +48,13 @@
 		</div>
 		<div
 			class="w-select__arrow"
+			*ngIf="clearable"
+			(click)="clear()"
+		>
+			<span class="material-icons">close</span>
+		</div>
+		<div
+			class="w-select__arrow"
 			[class._active]="selectShow"
 			(click)="selectShow=!selectShow; focus_search(); "
 		>
@@ -100,13 +107,13 @@
 			</div>
 			<div class="popup-block">
 				<ng-container
-					*ngFor="let _item of (items|search:search)"
+					*ngFor="let _item of (items|search:search:searchableBy)"
 					[ngTemplateOutlet]="t_item ? t_item : defaultItem"
 					[ngTemplateOutletContext]="{item: _item}"
 				></ng-container>
 				<div
 					class="popup-block__empty-search"
-					*ngIf="!(items|search:search)?.length"
+					*ngIf="!(items|search:search:searchableBy)?.length"
 				>
 					Nothing was found
 				</div>
@@ -121,7 +128,7 @@
 						[class.selected]="_values.indexOf(item[value]) !== -1"
 						class="item__text"
 					>
-						{{item.name}}
+						{{item[name]}}
 					</div>
 				</div>
 			</ng-template>

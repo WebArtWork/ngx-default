@@ -52,7 +52,22 @@ export class UsersComponent {
 					}
 				]
 			});
-		}
+		},
+		buttons: [
+			{
+				icon: 'input',
+				hrefFunc: (doc: User) => {
+					return `/`;
+				}
+			},
+			{
+				icon: 'input',
+				href: '/'
+			},
+			{
+				icon: 'input'
+			}
+		]
 	};
 
 	columns = ['name', 'email'];

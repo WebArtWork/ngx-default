@@ -96,7 +96,11 @@ export class FormComponentComponent implements OnInit {
 			this.control = new FormControl(data.value);
 
 			this.control.valueChanges.subscribe((value: unknown) => {
-				this.submition[this.component.key as string] = value;
+				if (this.component.root) {
+					this.submition[this.component.key as string] = value;
+				} else {
+					(this.submition['data'] as Record<string, unknown>)[this.component.key as string] = value;
+				}
 
 				this.wChange.emit();
 			});

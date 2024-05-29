@@ -5,6 +5,7 @@
       "noPropertyAccessFromIndexSignature": true,
       "forceConsistentCasingInFileNames": true,
       "strictPropertyInitialization": false,
+      "esModuleInterop": true,
       "typeRoots": [
         "node_modules/@types"
       ],
@@ -12,7 +13,6 @@
       "experimentalDecorators": true,
       "noImplicitOverride": true,
       "outDir": "./dist/out-tsc",
-      "downlevelIteration": true,
       "moduleResolution": "node",
       "noImplicitReturns": true,
       "resolveJsonModule": true,

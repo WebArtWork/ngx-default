@@ -1,14 +1,11 @@
-@import '/src/scss/utils/vars';
-@import 'angular';
-
 .w-btn {
-  font-size: $fs;
+  font-size: var(--fs);
   font-weight: 500;
-  font-family: $ff-base;
+  font-family: var(--ff-base);
   background-color: var(--c-primary);
-  border-radius: $b-radius-btn;
+  border-radius: var(--b-radius-btn);
   transition: var(--transition);
-  color: $c-white;
+  color: var(--c-white);
   position: relative;
   padding: 11px 25px;
   line-height: 19px;
@@ -33,16 +30,16 @@
 
   &._second {
     border: 1px solid #256EFF;
-    background-color: $c-white;
+    background-color: var(--c-white);
     color: #256EFF;
   }
 
   &._danger {
-    background-color: $c-error;
+    background-color: var(--c-error);
     color: white;
 
     &:hover {
-      background: $c-error-hover;
+      background: var(--c-error-hover);
     }
   }
 
@@ -58,12 +55,12 @@
   }
 
   &:disabled {
-    background-color: $c-grey-dark;
+    background-color: var(--c-grey-dark);
     cursor: default;
     
 
     &:hover {
-      background-color: $c-grey-dark;
+      background-color: var(--c-grey-dark);
     }
   }
 }

@@ -15,6 +15,8 @@ import {
 	ActionsDirective,
 	CustomEditDirective
 } from './table.directive';
+import { Router } from '@angular/router';
+import { StoreService } from 'wacom';
 
 @Component({
 	selector: 'wtable',
@@ -22,6 +24,15 @@ import {
 	styleUrls: ['./table.component.scss']
 })
 export class TableComponent implements OnInit, AfterContentInit {
+	constructor(private _router: Router, private _store: StoreService) {}
+
+	tableId =
+		'table_' +
+		this._router.url
+			.split('/')
+			.filter((p) => p && p.length !== 24)
+			.join('/');
+
 	@Input() config: any = {};
 
 	@Input() columns: any = [];
@@ -40,19 +51,44 @@ export class TableComponent implements OnInit, AfterContentInit {
 
 	@ContentChild(CustomEditDirective, { static: false }) editForm: any;
 
+	now = Date.now();
+	refresh() {
+		this.now = Date.now();
+	}
+
+	searchShow = false;
+	searching_text = '';
+	filter_filter = '';
 	@Output() onSearch = new EventEmitter();
+	private _search_timeout: any;
+	searching() {
+		setTimeout(() => {
+			if (!this.config.globalSearch) {
+				this.filter_filter = this.searching_text;
+			}
+		}, 100);
+		clearTimeout(this._search_timeout);
+		this._search_timeout = setTimeout(this.searching.bind(this), 2000);
+	}
+	search() {
+		clearTimeout(this._search_timeout);
+		setTimeout(() => {
+			if (!this.config.globalSearch) {
+				this.filter_filter = this.searching_text;
+			}
+
+			this.refresh();
+		}, 100);
+		this.onSearch.emit(this.searching_text);
+	}
 
 	select_page_size = false;
-
-	searching_text = '';
 
 	custom_cell: any = {};
 
 	sort_type: any = {};
 
 	sortable: any = {};
-
-	searchShow: any;
 
 	ngOnInit(): void {
 		this.default_config();
@@ -65,15 +101,21 @@ export class TableComponent implements OnInit, AfterContentInit {
 				};
 			}
 		}
+
+		this._store.get(this.tableId + 'perPage', (perPage) => {
+			if (perPage) {
+				this.changePerPage(Number(perPage));
+			}
+		});
 	}
 
 	default_config(): void {
 		if (!this.config.pageSizeOptions) {
-			this.config.pageSizeOptions = [5, 10, 25];
+			this.config.pageSizeOptions = [1, 10, 20, 50];
 		}
 
 		if (!this.config.perPage) {
-			this.config.perPage = 5;
+			this.config.perPage = -1;
 		}
 
 		if (!this.config.page) {
@@ -82,6 +124,10 @@ export class TableComponent implements OnInit, AfterContentInit {
 
 		if (!this.config.searchable) {
 			this.config.searchable = false;
+		}
+
+		if (typeof this.config.allDocs !== 'boolean') {
+			this.config.allDocs = true;
 		}
 	}
 
@@ -95,28 +141,64 @@ export class TableComponent implements OnInit, AfterContentInit {
 
 			this.custom_cell[cell.cell] = cell.template;
 		}
+
+		const interval = setInterval(() => {
+			this.refresh();
+		}, 1000);
+		setTimeout(() => {
+			clearInterval(interval);
+		}, 20000);
 	}
 
 	next(): void {
-		if (this.config.page * this.config.perPage < this.rows.length) {
+		if (
+			typeof this.config.paginate === 'function' ||
+			this.config.page * this.config.perPage < this.rows.length
+		) {
 			this.config.page += 1;
 		}
+
+		if (typeof this.config.paginate === 'function') {
+			this.config.paginate(this.config.page);
+		}
+
+		this.refresh();
 	}
 
 	previous(): void {
 		if (this.config.page > 1) {
 			this.config.page -= 1;
+
+			if (typeof this.config.paginate === 'function') {
+				this.config.paginate(this.config.page);
+			}
+
+			this.refresh();
 		}
 	}
 
 	changePerPage(row: any): void {
 		this.config.perPage = row;
 
+		if (typeof this.config.setPerPage === 'function') {
+			this.config.setPerPage(this.config.perPage);
+		}
+
+		this.config.page = 1;
+
+		if (typeof this.config.paginate === 'function') {
+			this.config.paginate(this.config.page);
+		}
+
+		this._store.set(this.tableId + 'perPage', row.toString());
+
 		if ((this.config.page - 1) * this.config.perPage > this.rows.length) {
 			this.lastPage();
 		}
 
 		this.select_page_size = false;
+
+		this.refresh();
 	}
 
 	lastPage(): void {

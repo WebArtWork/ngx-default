@@ -56,25 +56,25 @@ export class FormService {
 
 			for (const component of form.components) {
 				for (const field of (component.fields as TemplateFieldInterface[])) {
-					if (typeof field.value === 'string') {
-						this.translateFormComponent(form, field);
-					}
+					this.translateFormComponent(form, field);
 				}
 			}
 		}
 	}
 
 	translateFormComponent(form: FormInterface, field: TemplateFieldInterface) {
-		field.name = this._translate.translate(
-			`Form_${form.formId}.${field.name}`,
-			(name: string) => {
-				field.name = name;
-			}
-		);
+		// const fieldName = field.name;
+		// field.name = this._translate.translate(
+		// 	`Form_${form.formId}.${fieldName}`,
+		// 	(name: string) => {
+		// 		field.name = name;
+		// 	}
+		// );
 
-		if (typeof field.value === 'string') {
+		const fieldValue = field.value;
+		if (typeof fieldValue === 'string') {
 			field.value = this._translate.translate(
-				`Form_${form.formId}.${field.value}`,
+				`Form_${form.formId}.${fieldValue}`,
 				(value: string) => {
 					field.value = value;
 				}
@@ -247,6 +247,11 @@ export class FormService {
 		if (form) {
 			for (const component of form.components) {
 				component.root = true;
+			}
+		}
+		if (customForm) {
+			for (const component of customForm.components) {
+				component.root = false;
 			}
 		}
 

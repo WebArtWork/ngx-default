@@ -12,15 +12,26 @@ import {
 } from './table.directive';
 import { ButtonModule } from '../button/button.module';
 import { RouterModule } from '@angular/router';
+import { InputModule } from '../input/input.module';
+import { PerPagePipe } from './per-page.pipe';
 
 @NgModule({
-	imports: [CommonModule, FormsModule, WacomModule, FormModule, ButtonModule, RouterModule],
+	imports: [
+		CommonModule,
+		FormsModule,
+		WacomModule,
+		FormModule,
+		ButtonModule,
+		RouterModule,
+		InputModule
+	],
 	declarations: [
 		TableComponent,
 		CellDirective,
 		SortDirective,
 		ActionsDirective,
-		CustomEditDirective
+		CustomEditDirective,
+		PerPagePipe
 	],
 	providers: [],
 	exports: [
