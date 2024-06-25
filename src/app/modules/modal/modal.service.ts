@@ -1,12 +1,7 @@
 import { Injectable, Inject, Optional } from '@angular/core';
 import { CoreService, DomService } from 'wacom';
 import { ModalComponent } from './modal.component';
-import {
-	Modal,
-	MODAL_CONFIG_TOKEN,
-	ModalConfig,
-	MODAL_DEFAULT_CONFIG
-} from './modal.interface';
+import { MODAL_CONFIG_TOKEN, ModalConfig, Modal } from './modal.interface';
 
 @Injectable({
 	providedIn: 'root'
@@ -34,9 +29,9 @@ export class ModalService {
 		if (
 			typeof opts.component == 'string' &&
 			this.config.modals &&
-			this.config.modals[(opts.component as string)]
+			this.config.modals[opts.component as string]
 		) {
-			opts.component = this.config.modals[(opts.component as string)];
+			opts.component = this.config.modals[opts.component as string];
 		}
 
 		if (typeof opts.component != 'function') {

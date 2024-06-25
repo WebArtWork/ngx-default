@@ -16,6 +16,8 @@ import { TextComponent } from './text/text.component';
 import { ButtonComponent } from './button/button.component';
 import { PasswordComponent } from './password/password.component';
 import { SelectComponent } from './select/select.component';
+import { BooleanComponent } from './boolean/boolean.component';
+import { TagsComponent } from './tags/tags.component';
 
 
 @NgModule({
@@ -37,12 +39,24 @@ import { SelectComponent } from './select/select.component';
 		PasswordComponent,
 		SelectComponent,
 		TextComponent,
-  		ButtonComponent
+  		ButtonComponent,
+    	BooleanComponent,
+		TagsComponent
 	]
 })
 export class FormcomponentsModule {
 	constructor(private _form: FormService) {
 		/* addComponents */
+		this._form.addComponent({
+			component: BooleanComponent,
+			name: 'Boolean',
+			fields: ['Label']
+		});
+		this._form.addComponent({
+			component: TagsComponent,
+			name: 'Tags',
+			fields: ['Placeholder', 'Label', 'Button']
+		});
 		this._form.addComponent({
 			component: EmailComponent,
 			name: 'Email',
@@ -61,7 +75,11 @@ export class FormcomponentsModule {
 		this._form.addComponent({
 			component: SelectComponent,
 			name: 'Select',
-			fields: ['Placeholder', 'Label']
+			fields: ['Placeholder', 'Label', 'Items', 'Multiple'],
+			fieldComponent: {
+				Items: 'Tags',
+				Multiple: 'Boolean'
+			}
 		});
 		this._form.addComponent({
 			component: DateComponent,
@@ -71,7 +89,10 @@ export class FormcomponentsModule {
 		this._form.addComponent({
 			component: TextComponent,
 			name: 'Text',
-			fields: ['Placeholder', 'Label']
+			fields: ['Placeholder', 'Label', 'Textarea'],
+			fieldComponent: {
+				Textarea: 'Boolean'
+			}
 		});
 		this._form.addComponent({
 			component: PasswordComponent,
@@ -81,7 +102,10 @@ export class FormcomponentsModule {
 		this._form.addComponent({
 			component: ButtonComponent,
 			name: 'Button',
-			fields: ['Label']
+			fields: ['Label', 'Click', 'Submit'],
+			fieldComponent: {
+				Submit: 'Boolean'
+			}
 		});
 		this._form.addComponent({
 			component: PhotoComponent,

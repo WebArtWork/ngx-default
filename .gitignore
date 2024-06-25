@@ -4,10 +4,6 @@
 /tmp
 /out-tsc
 /bazel-out
-.vscode
-.angular
-.husky
-package-lock.json
 
 # Node
 /node_modules

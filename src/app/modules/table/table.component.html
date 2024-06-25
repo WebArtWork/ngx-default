@@ -283,7 +283,7 @@
 			</div>
 			<div
 				class="table-footer__pagination"
-				*ngIf="config.perPage && config.allDocs"
+				*ngIf="config.perPage !== -1 && config.allDocs"
 			>
 				<wbutton
 					class="table-footer__arrow _start"
@@ -314,10 +314,7 @@
 					<i class="chevron"></i>
 				</wbutton>
 			</div>
-			<div
-				class="table-footer__pagination"
-				*ngIf="!config.allDocs"
-			>
+			<div class="table-footer__pagination" *ngIf="!config.allDocs">
 				<wbutton
 					class="table-footer__arrow _left"
 					[disabled]="config.page === 1"

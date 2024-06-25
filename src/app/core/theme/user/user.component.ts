@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { UserService } from 'src/app/modules/user/services/user.service';
 import { coreAnimation } from '../../animations/core.animations';
-import { UserService } from '../../services/user.service';
+import { environment } from 'src/environments/environment';
+import { Platform } from '@angular/cdk/platform';
+import { Component } from '@angular/core';
 
 @Component({
 	selector: 'app-user',
@@ -9,9 +11,14 @@ import { UserService } from '../../services/user.service';
 	animations: [coreAnimation]
 })
 export class UserComponent {
-	show = false;
+	readonly url = environment.url;
+	forceAvatarUrl = '';
+	showSidebar = false;
+	hideSidebar(): void {
+		if (!this._platform.ANDROID && !this._platform.IOS) {
+			this.showSidebar = false;
+		}
+	}
 
-	showDesktop = false;
-
-	constructor(public us: UserService) {}
+	constructor(public us: UserService, private _platform: Platform) {}
 }

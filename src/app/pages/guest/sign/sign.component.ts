@@ -4,9 +4,9 @@ import { AlertService } from 'src/app/modules/alert/alert.service';
 import { Router } from '@angular/router';
 import { FormInterface } from 'src/app/modules/form/interfaces/form.interface';
 import { FormService } from 'src/app/modules/form/form.service';
-import { UserService } from 'src/app/core/services/user.service';
-import { User } from 'src/app/core/interfaces/user';
 import { TranslateService } from 'src/app/modules/translate/translate.service';
+import { UserService } from 'src/app/modules/user/services/user.service';
+import { User } from 'src/app/modules/user/interfaces/user.interface';
 
 interface RespStatus {
 	email: string;
@@ -29,8 +29,7 @@ export class SignComponent {
 		title: 'Sign In / Sign Up',
 		components: [
 			{
-				// name: 'Email',
-				name: 'Text',
+				name: 'Email',
 				key: 'email',
 				root: true,
 				focused: true,
@@ -61,7 +60,6 @@ export class SignComponent {
 				]
 			},
 			{
-				// name: 'Number',
 				name: 'Text',
 				key: 'code',
 				root: true,
@@ -83,6 +81,10 @@ export class SignComponent {
 					{
 						name: 'Label',
 						value: "Let's go"
+					},
+					{
+						name: 'Submit',
+						value: true
 					}
 				]
 			}
@@ -174,9 +176,12 @@ export class SignComponent {
 		if (user) {
 			localStorage.setItem('waw_user', JSON.stringify(user));
 
-			this._http.set('token', user.token);
+			this._http.set(
+				'token',
+				(user as unknown as { token: string }).token
+			);
 
-			this.us.user = user;
+			this.us.setUser(user);
 
 			this.us.load();
 

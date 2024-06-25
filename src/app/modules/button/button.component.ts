@@ -11,6 +11,8 @@ export class ButtonComponent {
 
 	@Input() type = ButtonTypes[0];
 
+	@Input() class = '';
+
 	@Input() disabled = false;
 
 	@Input() disableSubmit = false;

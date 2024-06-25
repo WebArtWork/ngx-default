@@ -1,12 +1,14 @@
 export interface TemplateFieldInterface {
 	name: string;
 	value: unknown;
+	skipTranslation?: boolean;
 }
 
 export interface TemplateComponentInterface {
-	component: unknown;
-	fields: string[];
 	name: string;
+	component: unknown;
+	fields?: string[];
+	fieldComponent?: Record<string, string>;
 }
 
 export interface FormComponentInterface {

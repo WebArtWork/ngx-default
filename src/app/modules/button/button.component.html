@@ -13,7 +13,7 @@
 	[type]="click || disableSubmit ? 'button' : 'submit'"
 	[disabled]="disabled"
 	(click)="clicked()"
-	class="w-btn"
+	class="w-btn{{class? ' ' + class : ''}}"
 >
 	<ng-content></ng-content>
 </button>

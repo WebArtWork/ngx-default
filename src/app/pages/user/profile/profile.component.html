@@ -3,25 +3,30 @@
 		<div class="profile__header w-card__header">
 			<div>
 				<div class="avatar _profile">
-					<img
-						[src]="us.user.thumb || 'assets/default.png'"
-						class="avatar__img"
-						width="50"
-						height="50"
-						alt="User Avatar"
-					/>
-					<label class="avatar__upload" for="userAvatarUrl">
-						<i class="material-icons avatar__icon">edit</i>
-					</label>
+					<ngx-file
+						(update)="us.user.thumb = $event; us.updateMe()"
+						[value]="us.user.thumb ? url + us.user.thumb : 'assets/default.png'"
+						[name]="us.user._id + '.jpg'"
+						err="assets/default.png"
+						[isPhoto]="true"
+						[imgStyle]="{
+							'border-radius': 'var(--c-img-round)',
+							'width': '52px',
+							'height': '52px'
+						}"
+						container="user"
+						[height]="512"
+						[width]="512"
+					></ngx-file>
 				</div>
 			</div>
 		</div>
 		<div class="profile__body">
 			<wform
-				*ngIf="user"
 				(wChange)="update($event)"
 				[config]="formProfile"
 				[submition]="user"
+				*ngIf="user"
 			></wform>
 
 			<div class="profile__footer">
@@ -33,7 +38,7 @@
 				</div>
 
 				<div class="profile__password">
-					<wbutton (click)="change_password()" type="link" translate>
+					<wbutton (click)="changePassword()" type="link" translate>
 						Profile.Change Password
 					</wbutton>
 				</div>

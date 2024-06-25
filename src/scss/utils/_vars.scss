@@ -63,6 +63,7 @@
 
     // theme
     :root {
+		--c-white: #fff;
         --c-basic: #3558ae;
         --c-primary: #256eff;
         --c-primary-hover: #0051f1;
@@ -75,9 +76,11 @@
         --c-text-primary: #666666;
         --c-text-secondary: #19235c;
         --c-placeholder: #adb8c6;
+		--c-img-round: 50%;
     }
 
     html.dark:root {
+		--c-white: #fff;
         --c-basic: #333;
         --c-bg-primary: #282828;
         --c-bg-secondary: #343434;
