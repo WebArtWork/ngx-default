@@ -16,6 +16,7 @@ import { GuestGuard } from './core/guards/guest.guard';
 import { AdminsGuard } from './core/guards/admins.guard';
 import { AlertModule } from './modules/alert/alert.module';
 import { ModalModule } from './modules/modal/modal.module';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 const routes: Routes = [
 	{
@@ -153,7 +154,15 @@ const routes: Routes = [
 			preloadingStrategy: PreloadAllModules
 		})
 	],
-	providers: [AuthenticatedGuard, GuestGuard, AdminsGuard],
+	providers: [
+		AuthenticatedGuard,
+		GuestGuard,
+		AdminsGuard,
+		{
+			provide: LocationStrategy,
+			useClass: HashLocationStrategy
+		}
+	],
 	bootstrap: [AppComponent]
 })
 export class AppModule {}
