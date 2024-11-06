@@ -1,8 +1,10 @@
-<ngx-file
-	(update)="control.setValue($event)"
-	[label]="field.Label"
-	[width]="field.Width"
-	[height]="field.Height"
-	[value]="value"
-	[isPhoto]="true"
-></ngx-file>
+<ng-template #templateRef let-data>
+	<ngx-file
+		(update)="data.control.setValue($event)"
+		[label]="data.field.Label"
+		[width]="data.field.Width"
+		[height]="data.field.Height"
+		[value]="data.value"
+		[isPhoto]="true"
+	></ngx-file>
+</ng-template>

@@ -1,10 +1,12 @@
-<ngx-file
-	(update)="control.setValue($event)"
-	[container]="config.formId"
-	[label]="field.Label"
-	[width]="field.Width"
-	[height]="field.Height"
-	[value]="value"
-	[multiple]="true"
-	[isPhoto]="true"
-></ngx-file>
+<ng-template #templateRef let-data>
+	<ngx-file
+		(update)="data.control.setValue($event)"
+		[container]="data.config.formId"
+		[label]="data.field.Label"
+		[width]="data.field.Width"
+		[height]="data.field.Height"
+		[value]="data.value"
+		[multiple]="true"
+		[isPhoto]="true"
+	></ngx-file>
+</ng-template>

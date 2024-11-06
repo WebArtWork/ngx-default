@@ -1,15 +1,19 @@
-import { FormControl, FormGroup } from '@angular/forms';
-import { Component } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { FormService } from '../../modules/form/form.service';
+
+interface Interface {}
 
 @Component({
-  selector: 'app-boolean',
-  templateUrl: './boolean.component.html',
-  styleUrl: './boolean.component.scss'
+	templateUrl: './boolean.component.html',
+	styleUrl: './boolean.component.scss'
 })
-export class BooleanComponent {
-	field: any = {};
-	component: any = {};
-	control: FormControl;
-	form: FormGroup;
-	value: unknown;
+export class BooleanComponent implements OnInit {
+	@ViewChild('templateRef', { static: true })
+	templateRef: TemplateRef<Interface>;
+
+	constructor(private _form: FormService) {}
+
+	ngOnInit(): void {
+		this._form.addTemplateComponent<Interface>('Boolean', this.templateRef);
+	}
 }

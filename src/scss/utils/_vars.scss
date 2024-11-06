@@ -67,7 +67,8 @@
         --c-basic: #3558ae;
         --c-primary: #256eff;
         --c-primary-hover: #0051f1;
-        --c-secondary: red;
+        --c-secondary: rgb(197, 61, 61);
+        --c-secondary-hover: rgb(150, 42, 42);
         --c-bg-primary: #f3f4f7;
         --c-bg-secondary: #ffffff;
         --c-bg-tertiary: #fcfdfe;
@@ -75,8 +76,29 @@
         --c-shadow: #f3f3f3;
         --c-text-primary: #666666;
         --c-text-secondary: #19235c;
-        --c-placeholder: #adb8c6;
+        --c-placeholder: #313335ab;
 		--c-img-round: 50%;
+        --card-background: #fefefe;
+        --card-border-radius: 10px;
+        --card-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        --card-margin-bottom: 24px;
+        --card-header-padding: 20px;
+        --card-header-background: #e0e0e0;
+        --card-body-padding: 20px;
+        --card-section-padding: 10px 0;
+        --card-footer-padding: 20px;
+        --card-footer-background: #e0e0e0;
+        --card-border-width: 2px;
+        --card-border-color: #cccccc;
+        --file-img-border-radius: 50%;
+        --file-add-bg: #28a745;
+        --file-add-bg-hover: #218838;
+        --file-item-border-radius: 10px;
+        --day-name: #988888;
+        --b-radius-btn: 10px;
+        --transition: all .3s;
+        --events: #4c8e9d;
+        --border: rgba(102, 91, 91, 0.432);
     }
 
     html.dark:root {
@@ -89,5 +111,9 @@
         --c-shadow: #444444;
         --c-text-primary: #ffffff;
         --c-text-secondary: #ffffff;
-        --c-placeholder: #7a7a7a;
+        --c-placeholder: #d3cdcd;
+        --c-calendar: #141414;
+        --day-name: #dad5d5;
+        --events: #1c2e32;  
+        --border: rgb(255 255 255 / 23%);
     }

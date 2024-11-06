@@ -26,7 +26,9 @@
 		@media screen and (max-width: 991px) {
 			padding: 20px;
 		}
-
+		@media screen and (max-width: 767px) {
+			padding: 10px;
+		}
 		// .fade {
 		// 	display: none;
 		// 	position: fixed;
@@ -41,9 +43,9 @@
 	}
 }
 
-.showTable {
+/*.showTable {
 	padding: 20px !important;
-}
+}*/
 
 hr {
 	border: none;
@@ -56,11 +58,11 @@ hr {
 	transition: all 0.5s ease-in-out;
 	background: var(--c-basic);
 	width: 100%;
+	box-shadow: 0 3px 5px -1px #0003, 0 6px 10px #00000024, 0 1px 18px #0000001f;
 	@include flexBox(flex, null, space-between, center, null);
 	min-height: 50px;
 	z-index: 100;
 	overflow: hidden;
-	box-shadow: 0 3px 5px -1px #0003, 0 6px 10px #00000024, 0 1px 18px #0000001f;
 	&__ul {
 		z-index: 1;
 		margin-top: 0;
@@ -224,13 +226,16 @@ hr {
 		right: 0;
 		transform: translateX(120%);
 		z-index: 10;
+		box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.03), 
+            0 6px 10px rgba(0, 0, 0, 0.24),
+            0 1px 18px rgba(0, 0, 0, 0.31);
+			transition: all 0.5s ease-in-out;
 		@media screen and (max-width: 767px) {
 			transform: translateX(120%) !important;
 		}
 		@include flexBox(flex, column, null, null, null);
-		transition: all 0.5s ease-in-out;
-		box-shadow: 0 3px 5px -1px #0003, 0 6px 10px #00000024,
-			0 1px 18px #0000001f;
+		
+		
 		&._active {
 			transform: translateX(120%) !important;
 			z-index: 0;

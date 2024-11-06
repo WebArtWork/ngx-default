@@ -1,25 +1,33 @@
-import { NgModule, Renderer2 } from '@angular/core';
+import { NgModule, Type } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { WacomModule } from 'wacom';
-import { ButtonModule } from 'src/app/modules/button/button.module';
-import { InputModule } from 'src/app/modules/input/input.module';
-import { CardModule } from 'src/app/modules/card/card.module';
-import { FormModule } from 'src/app/modules/form/form.module';
-import { TableModule } from '../modules/table/table.module';
-import { UserComponent } from './selectors/user/user.component';
+import { ButtonModule } from 'src/app/core/modules/button/button.module';
+import { InputModule } from 'src/app/core/modules/input/input.module';
+import { CardModule } from 'src/app/core/modules/card/card.module';
+import { TableModule } from './modules/table/table.module';
 import { IconsModule } from './icons/icons.module';
-import { TranslateModule } from '../modules/translate/translate.module';
-import { AlertModule } from '../modules/alert/alert.module';
-import { ModalModule } from '../modules/modal/modal.module';
+import { TranslateModule } from './modules/translate/translate.module';
 import { FormcomponentsModule } from './formcomponents/formcomponents.module';
-import { SelectModule } from '../modules/select/select.module';
+import { SelectModule } from './modules/select/select.module';
+import { FormModule } from './modules/form/form.module';
+/* imports */
 
+const components: Type<any>[] = [
+	/* components */
+];
+
+const selectors: Type<any>[] = [
+	/* selectors */
+];
+
+const pipes: Type<any>[] = [
+	/* pipes */
+];
 
 @NgModule({
-	declarations: [UserComponent],
+	declarations: components.concat(selectors).concat(pipes),
 	exports: [
-		/* exports */
 		TranslateModule,
 		SelectModule,
 		CommonModule,
@@ -29,12 +37,18 @@ import { SelectModule } from '../modules/select/select.module';
 		InputModule,
 		CardModule,
 		FormModule,
-		AlertModule,
-		ModalModule,
 		TableModule,
 		IconsModule
-	],
-	imports: [CommonModule, FormsModule, WacomModule, FormcomponentsModule],
-	providers: []
+	]
+		.concat(components)
+		.concat(selectors)
+		.concat(pipes),
+	imports: [
+		FormcomponentsModule,
+		SelectModule,
+		CommonModule,
+		FormsModule,
+		WacomModule
+	]
 })
 export class CoreModule {}

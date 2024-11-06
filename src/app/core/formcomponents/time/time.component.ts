@@ -1,14 +1,15 @@
-import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { FormService } from '../../modules/form/form.service';
+interface Interface {}
 @Component({
-	selector: 'time-formcomponents',
 	templateUrl: './time.component.html',
 	styleUrls: ['./time.component.scss']
 })
-export class TimeComponent {
-	field: any = {};
-	component: any = {};
-	control: FormControl;
-	form: FormGroup;
-	value: unknown;
+export class TimeComponent implements OnInit {
+	@ViewChild('templateRef', { static: true })
+	templateRef: TemplateRef<Interface>;
+	constructor(private _form: FormService) {}
+	ngOnInit(): void {
+		this._form.addTemplateComponent<Interface>('Time', this.templateRef);
+	}
 }

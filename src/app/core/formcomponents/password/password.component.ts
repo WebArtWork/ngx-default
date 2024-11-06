@@ -1,16 +1,19 @@
-import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { FormService } from '../../modules/form/form.service';
 import { UiService } from 'wacom';
+interface Interface {}
 @Component({
-	selector: 'password-formcomponents',
 	templateUrl: './password.component.html',
 	styleUrls: ['./password.component.scss']
 })
-export class PasswordComponent {
-	field: any = {};
-	component: any = {};
-	control: FormControl;
-	form: FormGroup;
-	value: unknown;
-	constructor(public ui: UiService) {}
+export class PasswordComponent implements OnInit {
+	@ViewChild('templateRef', { static: true })
+	templateRef: TemplateRef<Interface>;
+	constructor(private _form: FormService, public ui: UiService) {}
+	ngOnInit(): void {
+		this._form.addTemplateComponent<Interface>(
+			'Password',
+			this.templateRef
+		);
+	}
 }

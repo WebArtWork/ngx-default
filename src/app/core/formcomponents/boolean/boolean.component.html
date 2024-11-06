@@ -1,10 +1,11 @@
-<winput
-	[name]="field.Label || 'name'"
-	[focused]="component.focused"
-	[ngClass]="component.class"
-	[formControl]="control"
-	[label]="field.Label"
-	type="checkbox"
-	[value]="value"
-	[form]="form"
-></winput>
+<ng-template #templateRef let-data>
+	<winput
+		[value]="data.submition[data.key]"
+		(wChange)="data.submition[data.key] = $event"
+		[name]="data.field.Label || 'name'"
+		[focused]="data.component.focused"
+		[ngClass]="data.component.class"
+		[label]="data.field.Label"
+		type="checkbox"
+	></winput>
+</ng-template>

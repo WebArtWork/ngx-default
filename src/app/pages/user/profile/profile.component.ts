@@ -1,7 +1,7 @@
-import { FormInterface } from 'src/app/modules/form/interfaces/form.interface';
+import { FormInterface } from 'src/app/core/modules/form/interfaces/form.interface';
 import { UserService } from 'src/app/modules/user/services/user.service';
 import { User } from 'src/app/modules/user/interfaces/user.interface';
-import { FormService } from 'src/app/modules/form/form.service';
+import { FormService } from 'src/app/core/modules/form/form.service';
 import { environment } from 'src/environments/environment';
 import { Component } from '@angular/core';
 import { CoreService } from 'wacom';
@@ -24,7 +24,7 @@ export class ProfileComponent {
 		private _core: CoreService,
 		public us: UserService
 	) {
-		this._core.next('us.user', () => {
+		this._core.onComplete('us.user').then(() => {
 			const user = {};
 
 			this._core.copy(this.us.user, user);
@@ -41,7 +41,6 @@ export class ProfileComponent {
 			{
 				name: 'Text',
 				key: 'name',
-				root: true,
 				focused: true,
 				fields: [
 					{
@@ -91,8 +90,8 @@ export class ProfileComponent {
 
 	user: Record<string, unknown>;
 
-	update(submition: User): void {
-		this._core.copy(submition, this.us.user);
+	update(): void {
+		this._core.copy(this.user, this.us.user);
 
 		this.us.updateMe();
 	}
@@ -105,7 +104,6 @@ export class ProfileComponent {
 			{
 				name: 'Password',
 				key: 'oldPass',
-				root: true,
 				focused: true,
 				fields: [
 					{
@@ -121,7 +119,6 @@ export class ProfileComponent {
 			{
 				name: 'Password',
 				key: 'newPass',
-				root: true,
 				fields: [
 					{
 						name: 'Placeholder',
@@ -152,5 +149,11 @@ export class ProfileComponent {
 			.then((submition: ChangePassword) => {
 				this.us.changePassword(submition.oldPass, submition.newPass);
 			});
+	}
+
+	updateThumb(thumb: string | string[]): void {
+		this.us.user.thumb = Array.isArray(thumb) ? thumb[0] : thumb;
+
+		this.us.updateMe();
 	}
 }

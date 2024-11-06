@@ -1,19 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { FormService } from '../../modules/form/form.service';
+
+interface Interface {}
+
 @Component({
 	selector: 'button-formcomponents',
 	templateUrl: './button.component.html',
 	styleUrls: ['./button.component.scss']
 })
-export class ButtonComponent {
-	get disableSubmit(): boolean {
-		return typeof this.field.Submit === 'boolean'
-			? !this.field.Submit
-			: true;
+export class ButtonComponent implements OnInit {
+	@ViewChild('templateRef', { static: true })
+	templateRef: TemplateRef<Interface>;
+
+	constructor(private _form: FormService) {}
+
+	ngOnInit(): void {
+		this._form.addTemplateComponent<Interface>('Button', this.templateRef);
 	}
-	field: any = {};
-	click() {
-		if (typeof this.field.Click === 'function') {
-			this.field.Click();
+
+	click(data: any): void {
+		if (typeof data.field.Click === 'function') {
+			data.field.Click();
 		}
 	}
 }

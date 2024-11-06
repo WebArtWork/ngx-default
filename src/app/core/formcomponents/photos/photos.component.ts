@@ -1,15 +1,15 @@
-import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { FormService } from '../../modules/form/form.service';
+interface Interface { }
 @Component({
-	selector: 'photos-formcomponents',
 	templateUrl: './photos.component.html',
 	styleUrls: ['./photos.component.scss']
 })
-export class PhotosComponent {
-	field: any = {};
-	config: any = {};
-	component: any = {};
-	control: FormControl;
-	form: FormGroup;
-	value: string;
+export class PhotosComponent implements OnInit {
+	@ViewChild('templateRef', { static: true })
+	templateRef: TemplateRef<Interface>;
+	constructor(private _form: FormService) { }
+	ngOnInit(): void {
+		this._form.addTemplateComponent<Interface>('Photos', this.templateRef);
+	}
 }
