@@ -1,6 +1,0 @@
-{
-	"repo" : "git@github.com:WebArtWork/ngx-table.git",
-	"modules": {
-		"button": "*"
-	}
-}
