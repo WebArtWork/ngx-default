@@ -47,7 +47,7 @@ jobs:
           git add --all .  # Add all changes
           git commit -m "Deploy to GitHub Pages"
           git checkout -B gh-pages  # Switch to gh-pages branch
-          git push git@github.com:${{ github.repository }} gh-pages --force
+          git push git@github.com:${{ github.repository }} gh-pages --force-with-lease
 
       - name: Clean up SSH
         run: |
