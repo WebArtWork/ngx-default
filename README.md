@@ -2,8 +2,8 @@
 
 ## Class Structure
 1) readonly
-2) public
+2) variables
 3) contructor
 4) public functions
-5) private
+5) private variables
 6) private functions
