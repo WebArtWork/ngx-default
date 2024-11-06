@@ -90,7 +90,7 @@ export class SignComponent {
 	});
 
 	user = {
-		email: 'ceo@webart.work',
+		email: 'demo@webart.work',
 		password: 'asdasdasdasd',
 		resetPin: null
 	};
