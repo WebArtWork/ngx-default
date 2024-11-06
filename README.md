@@ -1,5 +1,8 @@
 # App
 
+## CLI commands
+[waw Angular CLI](https://github.com/WebArtWork/waw-angular)
+
 ## Class Structure
 1) readonly
 2) variables
