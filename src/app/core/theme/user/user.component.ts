@@ -5,10 +5,11 @@ import { Platform } from '@angular/cdk/platform';
 import { Component } from '@angular/core';
 
 @Component({
-	selector: 'app-user',
-	templateUrl: './user.component.html',
-	styleUrls: ['./user.component.scss'],
-	animations: [coreAnimation]
+    selector: 'app-user',
+    templateUrl: './user.component.html',
+    styleUrls: ['./user.component.scss'],
+    animations: [coreAnimation],
+    standalone: false
 })
 export class UserComponent {
 	readonly url = environment.url;

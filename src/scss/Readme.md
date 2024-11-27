@@ -11,6 +11,7 @@
 	4. padding
 	5. size
 	6. text
+
 ### Components
 	1. w-btn
 	2. w-checkbox
@@ -19,10 +20,12 @@
 	5. w-radio
 	6. w-switch
 	7. w-table
+
 ### Layout
 	1. base
 	2. grid
 	3. scroll
+
 ### Utils
 	1. fonts
 	2. icons
@@ -30,10 +33,13 @@
 	4. mixins
 	5. vars
 	6. angular
+
 ### Vendors
 	1. normalize
+
 ## III. SETTINGS
 - Go to ```waw.scss``` and turn on/off imports scss files
+
 ## IV. INFO
 1. atom - include atomic classes.
 2. common - include styles which appears on few pages.
@@ -50,11 +56,14 @@
 - Go to ```scss/Classes.md``` - ready made htnl classes
 
 ## VII. HTML/SCSS RULES
+
 ### We use BEM technology but changed a little for themselves (optional)
+
 #### a. HTML
 	1. block -> "header"
 	2. element -> "header__link"
 	3. modifier -> "_active"
+
 #### b. SCSS
 	1. block -> "header {}"
 	2. element -> "&__link {}"

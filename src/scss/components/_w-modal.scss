@@ -1,13 +1,13 @@
-@import '/src/scss/utils/vars';
-  
-@import 'angular';
+@use 'src/scss/utils/mixins' as mixins;
+@use 'src/scss/utils/media' as media;
+@use 'src/scss/utils/vars' as vars;
 
 #html .modal {
   padding: 20px;
 
   &-content {
     background: var(--c-bg-secondary);
-    border-radius: $b-radius;
+    border-radius: vars.$b-radius;
     border: 1px solid var(--c-border);
     max-width: 700px;
     padding-top: 45px;

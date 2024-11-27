@@ -1,6 +1,6 @@
-@import '/src/scss/utils/vars';
-  
-@import 'angular';
+@use 'src/scss/utils/mixins' as mixins;
+@use 'src/scss/utils/media' as media;
+@use 'src/scss/utils/vars' as vars;
 
 .w-checkbox {
     &__body {
@@ -11,7 +11,7 @@
         padding: 6px 8px;
         border-radius: 6px;
         overflow: hidden;
-        transition: $transition;
+        transition: vars.$transition;
         &:not(:last-child) {
             margin-right: 6px;
         }
@@ -21,7 +21,7 @@
         &:hover .w-checkbox__svg {
             border-color: var(--c-primary);
         }
-        @include bp-max(md) {
+        @include media.bp-max(md) {
             width: 100%;
             margin-bottom: 4px;
             display: inline-block;
@@ -46,7 +46,7 @@
         border-radius: 4px;
         transform: scale(1);
         border: 1px solid var(--c-border);
-        transition: $transition;
+        transition: vars.$transition;
         box-shadow: 0 1px 1px var(--c-shadow);
     }
     &__svg svg {

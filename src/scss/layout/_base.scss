@@ -1,12 +1,14 @@
 // ===== BASE STYLE =====
-@import '/src/scss/utils/vars';
+@use 'src/scss/utils/mixins' as mixins;
+@use 'src/scss/utils/media' as media;
+@use 'src/scss/utils/vars' as vars;
 html {
-    font-size: $fs;
+    font-size: vars.$fs;
     overflow: hidden;
     height: 100%;
 }
 body {
-    font-family: $ff-base;
+    font-family: vars.$ff-base;
     color: var(--c-text-primary);
     line-height: 1.4;
     position: relative;
@@ -19,7 +21,7 @@ body {
 .container {
     margin-left: auto;
     margin-right: auto;
-    padding: $padding;
+    padding: vars.$padding;
     max-width: 100%;
     width: 100%;
 }

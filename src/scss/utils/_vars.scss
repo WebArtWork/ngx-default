@@ -1,65 +1,67 @@
+@use 'sass:meta';
+    
     $default-c-white: #fff;
-    $c-white: if(variable-exists(--c-white), var(--c-white), $default-c-white);
+    $c-white: if(meta.variable-exists(--c-white), var(--c-white), $default-c-white);
 
     $default-c-black: #000;
-    $c-black: if(variable-exists(--c-black), var(--c-black), $default-c-black);
+    $c-black: if(meta.variable-exists(--c-black), var(--c-black), $default-c-black);
 
     $default-c-grey: #e7e7e7;
-    $c-grey: if(variable-exists(--c-grey), var(--c-grey), $default-c-grey);
+    $c-grey: if(meta.variable-exists(--c-grey), var(--c-grey), $default-c-grey);
 
     $default-c-grey-dark: #bfbfbf;
-    $c-grey-dark: if(variable-exists(--c-grey-dark), var(--c-grey-dark), $default-c-grey-dark);
+    $c-grey-dark: if(meta.variable-exists(--c-grey-dark), var(--c-grey-dark), $default-c-grey-dark);
 
     // classic
     $default-c-warn: #e67e22;
-    $c-warn: if(variable-exists(--c-warn), var(--c-warn), $default-c-warn);
+    $c-warn: if(meta.variable-exists(--c-warn), var(--c-warn), $default-c-warn);
 
     $default-c-error: #e74c3c;
-    $c-error: if(variable-exists(--c-error), var(--c-error), $default-c-error);
+    $c-error: if(meta.variable-exists(--c-error), var(--c-error), $default-c-error);
 
     $default-c-error-hover: #d62c1a;
-    $c-error-hover: if(variable-exists(--c-error-hover), var(--c-error-hover), $default-c-error-hover);
+    $c-error-hover: if(meta.variable-exists(--c-error-hover), var(--c-error-hover), $default-c-error-hover);
 
     $default-c-success: #14c76e;
-    $c-success: if(variable-exists(--c-success), var(--c-success), $default-c-success);
+    $c-success: if(meta.variable-exists(--c-success), var(--c-success), $default-c-success);
 
     $default-c-info: #17a2b8;
-    $c-info: if(variable-exists(--c-info), var(--c-info), $default-c-info);
+    $c-info: if(meta.variable-exists(--c-info), var(--c-info), $default-c-info);
 
     // geometry
     $default-container: 1210px;
-    $container: if(variable-exists(--container), var(--container), $default-container);
+    $container: if(meta.variable-exists(--container), var(--container), $default-container);
 
     $default-b-radius: 8px;
-    $b-radius: if(variable-exists(--b-radius), $b-radius, $default-b-radius);
+    $b-radius: if(meta.variable-exists(--b-radius), $b-radius, $default-b-radius);
 
     $default-b-radius-card: 10px;
-    $b-radius-card: if(variable-exists(--b-radius-card), var(--b-radius-card), $default-b-radius-card);
+    $b-radius-card: if(meta.variable-exists(--b-radius-card), var(--b-radius-card), $default-b-radius-card);
 
     $default-b-radius-btn: 10px;
-    $b-radius-btn: if(variable-exists(--b-radius-btn), var(--b-radius-btn), $default-b-radius-btn);
+    $b-radius-btn: if(meta.variable-exists(--b-radius-btn), var(--b-radius-btn), $default-b-radius-btn);
 
     $default-b-radius-img: 50%;
-    $b-radius-img: if(variable-exists(--b-radius-img), var(--b-radius-img), $default-b-radius-img);
+    $b-radius-img: if(meta.variable-exists(--b-radius-img), var(--b-radius-img), $default-b-radius-img);
 
     $default-padding: 10px;
-    $padding: if(variable-exists(--padding), var(--padding), $default-padding);
+    $padding: if(meta.variable-exists(--padding), var(--padding), $default-padding);
 
     $default-fs: 16px;
-    $fs: if(variable-exists(--fs), var(--fs), $default-fs);
+    $fs: if(meta.variable-exists(--fs), var(--fs), $default-fs);
 
     $default-ff-bold: bold;
-    $ff-bold: if(variable-exists(--ff-bold), var(--ff-bold), $default-ff-bold);
+    $ff-bold: if(meta.variable-exists(--ff-bold), var(--ff-bold), $default-ff-bold);
 
     $default-ff-base: "Poppins",
         sans-serif;
-    $ff-base: if(variable-exists(--ff-base), var(--ff-base), $default-ff-base);
+    $ff-base: if(meta.variable-exists(--ff-base), var(--ff-base), $default-ff-base);
 
     $default-letter-spacing: 0.3px;
-    $letter-spacing: if(variable-exists(--letter-spacing), var(--letter-spacing), $default-letter-spacing);
+    $letter-spacing: if(meta.variable-exists(--letter-spacing), var(--letter-spacing), $default-letter-spacing);
 
     $default-transition: .3s all ease-in-out;
-    $transition: if(variable-exists(--transition), var(--transition), $default-transition);
+    $transition: if(meta.variable-exists(--transition), var(--transition), $default-transition);
 
     // theme
     :root {

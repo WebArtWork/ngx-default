@@ -1,5 +1,6 @@
-@import 'angular';
-@import '/src/scss/utils/vars';
+@use 'src/scss/utils/mixins' as mixins;
+@use 'src/scss/utils/media' as media;
+@use 'src/scss/utils/vars' as vars;
 
 :host {
 	position: fixed;
@@ -11,7 +12,7 @@
 }
 
 .auth-wrapper {
-	@include flexBox(flex, null, center, center, null);
+	@include mixins.flexBox(flex, null, center, center, null);
 	background: var(--c-bg-primary);
 	flex-grow: 1;
 	padding: 20px;
@@ -22,7 +23,7 @@
 	max-width: 340px;
 	width: 100%;
 	padding: 30px;
-	border-radius: $b-radius-card;
+	border-radius: vars.$b-radius-card;
 	box-shadow: 0px 0px 6px var(--c-shadow);
 	background: var(--c-bg-secondary);
 	display: flex;
@@ -37,20 +38,20 @@
 		cursor: pointer;
 	}
 
-	@include bp-max(sm) {
+	@include media.bp-max(sm) {
 		padding: 25px;
 		flex-flow: column wrap;
 	}
 
 	&__title {
-		font-size: $fs + 8px;
-		font-weight: $ff-bold;
+		font-size: vars.$fs + 8px;
+		font-weight: vars.$ff-bold;
 		color: var(--c-text-primary);
 		text-align: center;
 		margin-bottom: 15px;
 
-		@include bp-max(sm) {
-			font-size: $fs + 2px;
+		@include media.bp-max(sm) {
+			font-size: vars.$fs + 2px;
 		}
 	}
 
@@ -71,7 +72,7 @@
 		max-width: 880px;
 		width: 100%;
 
-		@include bp-max(sm) {
+		@include media.bp-max(sm) {
 			padding: 25px;
 			flex-flow: column wrap;
 		}
@@ -93,7 +94,7 @@
 			opacity: 0;
 			cursor: pointer;
 
-			@include bp-max(sm) {
+			@include media.bp-max(sm) {
 				font-size: 70px;
 				transform: translate(-50%);
 			}
@@ -111,7 +112,7 @@
 			height: 100%;
 		}
 
-		@include bp-max(sm) {
+		@include media.bp-max(sm) {
 			max-width: 60px;
 			margin: 0 auto;
 			flex: 0 0 100%;
@@ -132,7 +133,7 @@
 		display: flex;
 		justify-content: flex-end;
 
-		@include bp-max(sm) {
+		@include media.bp-max(sm) {
 			flex: 0 0 100%;
 			max-width: 100%;
 			justify-content: center;
@@ -140,9 +141,9 @@
 		}
 	}
 
-	@include bp-max(sm) {
+	@include media.bp-max(sm) {
 		.form__title {
-			font-size: $fs - 2px;
+			font-size: vars.$fs - 2px;
 		}
 	}
 }
@@ -150,7 +151,7 @@
 wform {
 	flex: 1 0;
 
-	@include bp-max(sm) {
+	@include media.bp-max(sm) {
 		flex: 0 0 100%;
 		padding: 0;
 	}
@@ -167,20 +168,19 @@ wform {
 		color: var(--c-text-secondary);
 		// font-size: calc(#{$fs} - 6px);
 		font-size: 22px;
-		line-height: calc(#{$fs} + 4px);
-		letter-spacing: $letter-spacing;
-		transition: $transition;
+		letter-spacing: vars.$letter-spacing;
+		transition: vars.$transition;
 
 		&._sky {
-			color: $c-info;
+			color: vars.$c-info;
 		}
 
 		&._orange {
-			color: $c-warn;
+			color: vars.$c-warn;
 		}
 
 		&._green {
-			color: $c-success;
+			color: vars.$c-success;
 		}
 	}
 

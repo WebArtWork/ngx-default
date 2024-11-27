@@ -1,6 +1,6 @@
-@import '/src/scss/utils/vars';
-  
-@import 'angular';
+@use 'src/scss/utils/mixins' as mixins;
+@use 'src/scss/utils/media' as media;
+@use 'src/scss/utils/vars' as vars;
 
 .w-radio {
     position: relative;
@@ -33,7 +33,7 @@
             border-radius: 100%;
             background: var(--c-primary);
             transform: scale(0);
-            transition: $transition;
+            transition: vars.$transition;
             opacity: 0.08;
             pointer-events: none;
         }

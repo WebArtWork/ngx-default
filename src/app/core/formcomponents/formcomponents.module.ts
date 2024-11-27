@@ -6,6 +6,8 @@ import { SelectModule } from 'src/app/core/modules/select/select.module';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 /* componnets */
+import { CodeComponent } from './code/code.component';
+import { HtmlComponent } from './html/html.component';
 import { EmailComponent } from './email/email.component';
 import { NumberComponent } from './number/number.component';
 import { TimeComponent } from './time/time.component';
@@ -18,6 +20,17 @@ import { PasswordComponent } from './password/password.component';
 import { SelectComponent } from './select/select.component';
 import { BooleanComponent } from './boolean/boolean.component';
 import { TagsComponent } from './tags/tags.component';
+import { ACE_CONFIG, AceConfigInterface, AceModule } from 'ngx-ace-wrapper';
+import { NgxTinymceModule } from 'ngx-tinymce';
+import { FormsModule } from '@angular/forms';
+
+const DEFAULT_ACE_CONFIG: AceConfigInterface = {
+	maxLines: Infinity,
+	theme: 'monokai',
+	mode: 'json',
+	minLines: 10,
+	tabSize: 4
+};
 
 @NgModule({
 	imports: [
@@ -25,10 +38,17 @@ import { TagsComponent } from './tags/tags.component';
 		ButtonModule,
 		CommonModule,
 		FileModule,
-		SelectModule
+		SelectModule,
+		AceModule,
+		FormsModule,
+		NgxTinymceModule.forRoot({
+			baseURL: '//cdnjs.cloudflare.com/ajax/libs/tinymce/5.7.1/'
+		})
 	],
 	declarations: [
 		/* declarations */
+		CodeComponent,
+		HtmlComponent,
 		EmailComponent,
 		NumberComponent,
 		TimeComponent,
@@ -41,11 +61,21 @@ import { TagsComponent } from './tags/tags.component';
 		ButtonComponent,
 		BooleanComponent,
 		TagsComponent
+	],
+	providers: [
+		{
+			provide: ACE_CONFIG,
+			useValue: DEFAULT_ACE_CONFIG
+		}
 	]
 })
 export class FormcomponentsModule {
 	constructor(private _form: FormService) {
 		/* addComponents */
+		this._form.injectComponent<CodeComponent>('Code', CodeComponent);
+
+		this._form.injectComponent<HtmlComponent>('Html', HtmlComponent);
+
 		this._form.injectComponent<BooleanComponent>(
 			'Boolean',
 			BooleanComponent,

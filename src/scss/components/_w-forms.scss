@@ -1,6 +1,6 @@
-@import '/src/scss/utils/vars';
- 
-@import 'angular';
+@use 'src/scss/utils/mixins' as mixins;
+@use 'src/scss/utils/media' as media;
+@use 'src/scss/utils/vars' as vars;
 // forms
 
 .form-container{
@@ -20,8 +20,8 @@
 		color: var(--c-text-primary);
 		// font-size: calc(#{$fs} - 4px);
 		font-size: 19px;
-		line-height: calc(#{$fs} + 2px);
-		letter-spacing: $letter-spacing;
+		line-height: calc(#{vars.$fs} + 2px);
+		letter-spacing: vars.$letter-spacing;
 		// margin-bottom: 6px;
 		font-weight: 500;
 		margin-bottom: 15px;
@@ -40,30 +40,30 @@
 		height: 42px;
 		background-color: transparent;
 		border: 1px solid var(--c-border);
-		border-radius: $b-radius;
+		border-radius: vars.$b-radius;
 		color: var(--c-text-secondary);
-		font-size: calc(#{$fs} - 2px);
-		line-height: calc(#{$fs} + 4px);
-		transition: $transition;
+		font-size: calc(#{vars.$fs} - 2px);
+		line-height: calc(#{vars.$fs} + 4px);
+		transition: vars.$transition;
 		width: 100%;
 		display: block;
-		letter-spacing: $letter-spacing;
+		letter-spacing: vars.$letter-spacing;
 		padding: 10px;
 
 		&::placeholder {
 			color: var(--c-placeholder);
-			transition: $transition;
+			transition: vars.$transition;
 		}
 
 		&:focus {
-			transition: $transition;
+			transition: vars.$transition;
 			border-color: var(--c-primary);
 		}
 
 		&:disabled {
-			background-color: $c-grey;
-			border-color: $c-grey;
-			color: $c-grey;
+			background-color: vars.$c-grey;
+			border-color: vars.$c-grey;
+			color: vars.$c-grey;
 			cursor: default;
 			opacity: 0.6;
 		}

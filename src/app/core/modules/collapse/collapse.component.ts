@@ -2,9 +2,10 @@ import { Component, Input } from '@angular/core';
 import { Collapse } from './collapse.interface';
 
 @Component({
-	selector: 'wcollapse',
-	templateUrl: './collapse.component.html',
-	styleUrls: ['./collapse.component.scss']
+    selector: 'wcollapse',
+    templateUrl: './collapse.component.html',
+    styleUrls: ['./collapse.component.scss'],
+    standalone: false
 })
 export class CollapseComponent {
 	@Input() config: Collapse;
