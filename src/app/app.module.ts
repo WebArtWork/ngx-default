@@ -13,6 +13,7 @@ import { environment } from 'src/environments/environment';
 import { AuthenticatedGuard } from './core/guards/authenticated.guard';
 import { GuestGuard } from './core/guards/guest.guard';
 import { AdminsGuard } from './core/guards/admins.guard';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 const routes: Routes = [
 	{
@@ -37,19 +38,6 @@ const routes: Routes = [
 				loadChildren: () =>
 					import('./pages/guest/components/components.module').then(
 						(m) => m.ComponentsModule
-					)
-			},
-			{
-				path: 'test',
-				canActivate: [MetaGuard],
-				data: {
-					meta: {
-						title: 'test'
-					}
-				},
-				loadChildren: () =>
-					import('./pages/guest/test/test.module').then(
-						(m) => m.TestModule
 					)
 			},
 			{
@@ -188,7 +176,13 @@ const routes: Routes = [
 			preloadingStrategy: PreloadAllModules
 		})
 	],
-	providers: [AuthenticatedGuard, GuestGuard, AdminsGuard],
+	providers: [
+		/* providers */
+		{ provide: LocationStrategy, useClass: HashLocationStrategy },
+		AuthenticatedGuard,
+		GuestGuard,
+		AdminsGuard
+	],
 	bootstrap: [AppComponent]
 })
 export class AppModule {}
