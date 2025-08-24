@@ -1,16 +1,21 @@
+import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
+import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { Routes } from '@angular/router';
 // Core
-
-
-
+import { GuestComponent } from './core/theme/guest/guest.component';
+import { UserComponent } from './core/theme/user/user.component';
+import { PublicComponent } from './core/theme/public/public.component';
+import { AppComponent } from './app.component';
+import { CoreModule } from 'src/app/core/core.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // config
-import { MetaGuard } from 'wacom';
+import { WacomModule, MetaGuard } from 'wacom';
+import { environment } from 'src/environments/environment';
 // guards
-import { AdminsGuard } from './core/guards/admins.guard';
-import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { AuthenticatedGuard } from './core/guards/authenticated.guard';
 import { GuestGuard } from './core/guards/guest.guard';
+import { AdminsGuard } from './core/guards/admins.guard';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 const routes: Routes = [
 	{
@@ -21,7 +26,7 @@ const routes: Routes = [
 	{
 		path: '',
 		canActivate: [GuestGuard],
-		loadComponent: () => import('./core/theme/guest/guest.component').then(m => m.GuestComponent),
+		component: GuestComponent,
 		children: [
 			/* guest */
 			{
@@ -42,7 +47,7 @@ const routes: Routes = [
 	{
 		path: '',
 		canActivate: [AuthenticatedGuard],
-		loadComponent: () => import('./core/theme/user/user.component').then(m => m.UserComponent),
+		component: UserComponent,
 		children: [
 			/* user */
 			{
@@ -62,7 +67,7 @@ const routes: Routes = [
 	},
 	{
 		path: '',
-		loadComponent: () => import('./core/theme/public/public.component').then(m => m.PublicComponent),
+		component: PublicComponent,
 		children: [
 			/* user */
 			{
@@ -96,7 +101,7 @@ const routes: Routes = [
 	{
 		path: 'admin',
 		canActivate: [AdminsGuard],
-		loadComponent: () => import('./core/theme/user/user.component').then(m => m.UserComponent),
+		component: UserComponent,
 		children: [
 			/* admin */
 			{
@@ -147,5 +152,66 @@ const routes: Routes = [
 	}
 ];
 
-@NgModule()
+@NgModule({
+	declarations: [
+		AppComponent,
+		GuestComponent,
+		UserComponent,
+		PublicComponent
+	],
+	imports: [
+		CoreModule,
+		BrowserModule,
+		BrowserAnimationsModule,
+		WacomModule.forRoot({
+			store: {},
+			http: {
+				url: environment.url
+			},
+			socket: environment.production,
+			meta: {
+				useTitleSuffix: true,
+				defaults: {
+					title: environment.meta.title,
+					favicon: environment.meta.favicon,
+					description: environment.meta.description,
+					titleSuffix: ' | ' + environment.meta.title,
+					'og:image': environment.meta.image
+				}
+			},
+			modal: {
+				modals: {
+					/* modals */
+				}
+			},
+			alert: {
+				alerts: {
+					/* alerts */
+				}
+			},
+			loader: {
+				loaders: {
+					/* loaders */
+				}
+			},
+			popup: {
+				popups: {
+					/* popups */
+				}
+			}
+		}),
+		RouterModule.forRoot(routes, {
+			scrollPositionRestoration: 'enabled',
+			preloadingStrategy: PreloadAllModules
+		})
+	],
+	providers: [
+		/* providers */
+		{ provide: LocationStrategy, useClass: HashLocationStrategy },
+		AuthenticatedGuard,
+		GuestGuard,
+		AdminsGuard
+	],
+	bootstrap: [AppComponent]
+})
 export class AppModule {}
