@@ -7,6 +7,8 @@
 
 # Node
 /node_modules
+/test-results
+/playwright-report
 npm-debug.log
 yarn-error.log
 
@@ -28,7 +30,7 @@ yarn-error.log
 .history/*
 
 # Miscellaneous
-/.angular/cache
+*.angular
 .sass-cache/
 /connect.lock
 /coverage
@@ -39,7 +41,4 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
-dist
-.angular
-.vscode
-.husky
+dist/
