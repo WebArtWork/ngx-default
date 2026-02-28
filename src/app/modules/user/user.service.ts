@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 import { AlertService } from '@lib/alert';
 import { environment } from 'src/environments/environment';
 import { CrudService, EmitterService, HttpService } from 'wacom';
-import { User } from '../interfaces/user.interface';
+import { User } from './user.interface';
 @Injectable({
 	providedIn: 'root',
 })
